@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "fourside.github.io",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "fourside blog",
+  "version": "1.0.0",
+  "author": "fourside@gmail.com",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/fourside/fourside.github.io/issues"
   },
   "dependencies": {
     "gatsby": "^2.24.50",
@@ -39,10 +39,7 @@
     "gh-pages": "^3.1.0",
     "prettier": "2.1.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
+  "homepage": "",
   "license": "0BSD",
   "main": "n/a",
   "repository": {
