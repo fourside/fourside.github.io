@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 01 Sep 2020 15:59:32 GMT</lastBuildDate><item><title><![CDATA[作ったものの説明]]></title><description><![CDATA[今まで作ったものの説明をしてこなかったので簡単に説明しようと思います。 就職活動でGitHubのURLを乗せても、README…]]></description><link>https://fourside.github.iodesc_repo</link><guid isPermaLink="false">https://fourside.github.iodesc_repo</guid><pubDate>Mon, 31 Aug 2020 15:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 01 Sep 2020 16:04:49 GMT</lastBuildDate><item><title><![CDATA[作ったものの説明]]></title><description><![CDATA[今まで作ったものの説明をしてこなかったので簡単に説明しようと思います。 就職活動でGitHubのURLを乗せても、README…]]></description><link>https://fourside.github.iodesc_repo</link><guid isPermaLink="false">https://fourside.github.iodesc_repo</guid><pubDate>Mon, 31 Aug 2020 15:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;今まで作ったものの説明をしてこなかったので簡単に説明しようと思います。&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;就職活動でGitHubのURLを乗せても、READMEに書くのは簡単な説明と使い方くらいなので分かりにくいと思うので…。&lt;/p&gt;
@@ -803,10 +803,4 @@ include ld.so.conf.d/.conf
 # make
 # make install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;以上&lt;/h3&gt;
-&lt;p&gt;こんな感じでした。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[contentful test2]]></title><description><![CDATA[contentful web console sucks coz vim-vixen not work]]></description><link>https://fourside.github.iocontentful_test_2</link><guid isPermaLink="false">https://fourside.github.iocontentful_test_2</guid><pubDate>Mon, 31 Aug 2020 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;contentful web console sucks coz vim-vixen not work&lt;/p&gt;</content:encoded></item><item><title><![CDATA[contentful test]]></title><description><![CDATA[contentful cobra kai yes sensei]]></description><link>https://fourside.github.iocontentful_test</link><guid isPermaLink="false">https://fourside.github.iocontentful_test</guid><pubDate>Mon, 31 Aug 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;contentful&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;cobra kai&lt;/li&gt;
-&lt;li&gt;yes sensei&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;netflix&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; workspace&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;こんな感じでした。&lt;/p&gt;</content:encoded></item></channel></rss>
