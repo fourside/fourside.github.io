@@ -59,6 +59,9 @@ const Layout = ({ location, title, children }) => {
       <header>{header}</header>
       <main>{children}</main>
       <footer>
+        <p>
+          subscribe via <a href="/feed.xml">RSS</a>
+        </p>
         © {new Date().getFullYear()}, Built with
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
