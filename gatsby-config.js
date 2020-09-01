@@ -3,7 +3,6 @@ module.exports = {
     title: `fourside.github.io`,
     author: {
       name: `fourside`,
-      summary: `programmer`,
     },
     description: `programmer's note`,
     siteUrl: `https://fourside.github.io/`,
@@ -72,6 +71,14 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
+    },
+    {
+      resolve: `gatsby-source-gravatar`,
+      options: {
+        emails: [
+          { email: `fourside@gmail.com`, query: `?size=64` }
+        ]
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
