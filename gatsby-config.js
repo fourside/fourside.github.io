@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: `fourside.github.io`,
@@ -70,31 +72,34 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
+            serialize: ({ query: { site, contentful } }) => {
+              return contentful.edges.map(edge => {
+                return Object.assign({}, {
+                  title: edge.node.title,
+                  description: edge.node.body.childMarkdownRemark.excerpt,
+                  date: edge.node.updatedAt,
+                  url: site.siteMetadata.siteUrl + edge.node.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.slug,
+                  custom_elements: [{ "content:encoded": edge.node.body.childMarkdownRemark.html }],
                 })
               })
             },
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                contentful: allContentfulBlogPost(
+                  sort: {fields: updatedAt, order: DESC}, limit: 1000
                 ) {
                   edges {
                     node {
-                      excerpt
-                      html
-                      fields { slug }
-                      frontmatter {
-                        title
-                        date
+                      title
+                      slug
+                      body {
+                        childMarkdownRemark {
+                          excerpt
+                          html
+                        }
                       }
+                      updatedAt(formatString: "YYYY/MM/DD")
                     }
                   }
                 }
@@ -134,5 +139,12 @@ module.exports = {
       }
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
   ],
 }
