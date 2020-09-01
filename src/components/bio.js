@@ -44,9 +44,6 @@ const Bio = () => {
           minWidth: 50,
           borderRadius: `100%`,
         }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
       />
       <p
         style={{

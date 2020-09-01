@@ -8,32 +8,32 @@ import { rhythm } from "../utils/typography"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.contentful.edges;
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+        const title = node.title || node.slug
         return (
-          <article key={node.fields.slug}>
+          <article key={node.slug}>
             <header>
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <Link style={{ boxShadow: `none` }} to={node.slug}>
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{node.updatedAt}</small>
             </header>
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.excerpt,
+                  __html: node.body.childMarkdownRemark.excerpt,
                 }}
               />
             </section>
@@ -53,17 +53,18 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    contentful: allContentfulBlogPost(sort: {fields: updatedAt, order: DESC}, limit: 1000) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
+          title
+          slug
+          body {
+            body
+            childMarkdownRemark {
+              excerpt
+            }
           }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-          }
+          updatedAt(formatString: "YYYY/MM/DD")
         }
       }
     }
