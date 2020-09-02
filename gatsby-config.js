@@ -77,7 +77,7 @@ module.exports = {
                 return Object.assign({}, {
                   title: edge.node.title,
                   description: edge.node.body.childMarkdownRemark.excerpt,
-                  date: edge.node.updatedAt,
+                  date: edge.node.publishDate,
                   url: site.siteMetadata.siteUrl + edge.node.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.slug,
                   custom_elements: [{ "content:encoded": edge.node.body.childMarkdownRemark.html }],
@@ -87,7 +87,7 @@ module.exports = {
             query: `
               {
                 contentful: allContentfulBlogPost(
-                  sort: {fields: updatedAt, order: DESC}, limit: 1000
+                  sort: {fields: publishDate, order: DESC}, limit: 1000
                 ) {
                   edges {
                     node {
@@ -99,7 +99,7 @@ module.exports = {
                           html
                         }
                       }
-                      updatedAt(formatString: "YYYY/MM/DD")
+                      publishDate(formatString: "YYYY/MM/DD")
                     }
                   }
                 }

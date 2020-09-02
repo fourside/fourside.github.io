@@ -1,0 +1,17 @@
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.75rem;
+}
+h4 {
+  margin-bottom: 15px;
+}
+
+li, 
+li > p {
+  margin-bottom: unset;
+}
+li > ul {
+  margin-top: unset;
+}
+ul, ol {
+  margin-left: 20px;
+}

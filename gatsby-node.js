@@ -9,7 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         contentful: allContentfulBlogPost(
-          sort: { fields: updatedAt, order: DESC }
+          sort: { fields: publishDate, order: DESC }
           limit: 1000
         ) {
           edges {
