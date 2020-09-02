@@ -28,7 +28,7 @@ const BlogIndex = ({ data, location }) => {
                   {title}
                 </Link>
               </h3>
-              <small>{node.updatedAt}</small>
+              <small>{node.publishDate}</small>
             </header>
             <section>
               <p
@@ -53,7 +53,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    contentful: allContentfulBlogPost(sort: {fields: updatedAt, order: DESC}, limit: 1000) {
+    contentful: allContentfulBlogPost(sort: {fields: publishDate, order: DESC}, limit: 1000) {
       edges {
         node {
           title
@@ -64,7 +64,7 @@ export const pageQuery = graphql`
               excerpt
             }
           }
-          updatedAt(formatString: "YYYY/MM/DD")
+          publishDate(formatString: "YYYY/MM/DD")
         }
       }
     }

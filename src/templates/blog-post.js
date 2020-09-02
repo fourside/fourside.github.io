@@ -34,7 +34,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.updatedAt}
+            {post.publishDate}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
@@ -89,7 +89,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      updatedAt(formatString: "YYYY/MM/DD HH:mm:ss Z")
+      publishDate(formatString: "YYYY/MM/DD HH:mm:ss Z")
       body {
         childMarkdownRemark {
           excerpt(pruneLength: 160)
