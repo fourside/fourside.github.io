@@ -10,7 +10,7 @@
 </ul>
 <p>自動デプロイについて。Contentful で publish したら走るようにした。Contentful Webhook と GitHub Actions の組み合わせ。
 jekyllだと mdファイルをpushしたらGitHub Pagesが自動でビルドしてくれるが、Gatsby + Headless CMS だと一工夫いる(記事の中身は当然リポジトリの外にあり、ビルド時に取得するため）。</p>
-<p>デプロイは、<a href="https://www.npmjs.com/package/gh-pages">gh-pages</a> を使うだけ。GitHub Pagesのブランチを <code class="language-text">gh-pages</code> にしておいて、ビルド成果物だけを push する。</p>
+<p><del>デプロイは、<a href="https://www.npmjs.com/package/gh-pages">gh-pages</a> を使うだけ。GitHub Pagesのブランチを <code class="language-text">gh-pages</code> にしておいて、ビルド成果物だけを push する。</del> GitHub Actions では <a href="https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token">peaceiris/actions-gh-pages</a> を使うようにした（直接 gh-pages を使うと <code class="language-text">fatal: empty ident name (for &lt;runner@fv-az60.xxxxxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net&gt;) not allowed</code> なんて怒られてしまう。これには workflow 内で自動生成される GITHUB_TOKEN が必要らしいのだけど、便利な action があるので使わせてもらった）</p>
 <p>GitHub Actions のドキュメントは以下を参照した。日本語版だとデッドリンクがあったりURLのフラグメントが設定されてなかったりする。余談だけどドキュメントの規模が大きくなったとき、一部だけ見て理解できるようにコンテキストを少なくして作成できたらいいだろうなと思うものの、もともとボリュームが大きいのでできるだけスリムに書きたいとも思うし、塩梅は難しいな。</p>
 <ul>
 <li>
