@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Sep 2020 11:33:01 GMT</lastBuildDate><item><title><![CDATA[郵便番号検索APIを作った]]></title><description><![CDATA[fourside/postalcodesearch 元になるデータは zipcloud の加工済み csv ファイル を使った 構成 いわゆるサーバレス aws-cdk Lambda Function API Gateway DynamoDB…]]></description><link>https://fourside.github.iopostalcode_search</link><guid isPermaLink="false">https://fourside.github.iopostalcode_search</guid><pubDate>Tue, 08 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Sep 2020 11:39:42 GMT</lastBuildDate><item><title><![CDATA[郵便番号検索APIを作った]]></title><description><![CDATA[fourside/postalcodesearch 元になるデータは zipcloud の加工済み csv ファイル を使った。ありがたく使わせてもらっています zipcloud でも　WebAPI…]]></description><link>https://fourside.github.iopostalcode_search</link><guid isPermaLink="false">https://fourside.github.iopostalcode_search</guid><pubDate>Tue, 08 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/fourside/postalcodesearch&quot;&gt;fourside/postalcodesearch&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -s https://xxxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/addresses/1000001 &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; jq &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;
@@ -14,7 +14,12 @@
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;元になるデータは &lt;a href=&quot;http://zipcloud.ibsnet.co.jp/&quot;&gt;zipcloud の加工済み csv ファイル&lt;/a&gt; を使った&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元になるデータは &lt;a href=&quot;http://zipcloud.ibsnet.co.jp/&quot;&gt;zipcloud の加工済み csv ファイル&lt;/a&gt; を使った。ありがたく使わせてもらっています&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;zipcloud でも　WebAPI を公開してるのだけどなるべく自前でホストしたいと思って実装した&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;構成&lt;/h3&gt;
 &lt;ul&gt;
@@ -55,7 +60,7 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html&quot;&gt;BatchWriteItem&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;一度に複数レコードを書き込める API がある&lt;/li&gt;
+&lt;li&gt;一度に複数レコードを書き込める API を使う&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;ただし25件が上限で、超えると次のエラーメッセージ&lt;/p&gt;
 &lt;ul&gt;
