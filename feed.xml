@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Sep 2020 04:34:43 GMT</lastBuildDate><item><title><![CDATA[aws-cdk の aws-lambda-nodejs で puppeteer を動かす]]></title><description><![CDATA[作ったものはこれ fourside/meigaza 映画の情報をスクレイプして、 Slack や IFTTT 経由 でモバイル通知する Lambda Function aws-cdk で Lambda とその周辺の リソースを定義した aws-cdk AWS…]]></description><link>https://fourside.github.ioaws_cdk_lambda_nodejs_puppeteer</link><guid isPermaLink="false">https://fourside.github.ioaws_cdk_lambda_nodejs_puppeteer</guid><pubDate>Mon, 07 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Sep 2020 04:47:58 GMT</lastBuildDate><item><title><![CDATA[aws-cdk の aws-lambda-nodejs で puppeteer を動かす]]></title><description><![CDATA[作ったものはこれ fourside/meigaza 映画の情報をスクレイプして、 Slack や IFTTT 経由 でモバイル通知する Lambda Function aws-cdk で Lambda とその周辺の リソースを定義した aws-cdk AWS…]]></description><link>https://fourside.github.ioaws_cdk_lambda_nodejs_puppeteer</link><guid isPermaLink="false">https://fourside.github.ioaws_cdk_lambda_nodejs_puppeteer</guid><pubDate>Mon, 07 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;作ったものはこれ&lt;/p&gt;
 &lt;ul&gt;
@@ -47,13 +47,13 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/alixaxel/chrome-aws-lambda&quot;&gt;chrome-aws-lambda&lt;/a&gt; を &lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-lambda.LayerVersion.html&quot;&gt;Lambda Layer&lt;/a&gt; に含める&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;cdk deploy 時に layer のアセットを作るには以下を参照した&lt;/p&gt;
+&lt;p&gt;cdk deploy 時に layer のアセットを作るには以下を参考にした&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://dev.classmethod.jp/articles/aws-cdk-node-modules-lambda-layer/&quot;&gt;AWS CDK を使って node_modules を AWS Lambda Layers にデプロイするサンプル | Developers.IO&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;簡単にいうと、 &lt;code class=&quot;language-text&quot;&gt;bin/{appName}.ts&lt;/code&gt; がスタックを作る前に Layer のアセットとなる資材を作っておく&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;cdk deploy&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;cdk synth&lt;/code&gt; の度に Layer の zip を作るのもコストが大きいので、もとになる package-lock.json のハッシュ値を比較して作る作らないを制御するようにした&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;cdk deploy&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;cdk synth&lt;/code&gt; の度に Layer の元を作るのもコストが大きいので（具体的には&lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt;)、もとになる package-lock.json のハッシュ値を比較して作る作らないを制御するようにした&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;aws-lambda-nodejs でローカルでビルドするときのコツ&lt;/h3&gt;
 &lt;ul&gt;

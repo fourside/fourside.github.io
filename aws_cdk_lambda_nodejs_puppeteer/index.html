@@ -47,13 +47,13 @@
 <ul>
 <li><a href="https://github.com/alixaxel/chrome-aws-lambda">chrome-aws-lambda</a> を <a href="https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-lambda.LayerVersion.html">Lambda Layer</a> に含める</li>
 <li>
-<p>cdk deploy 時に layer のアセットを作るには以下を参照した</p>
+<p>cdk deploy 時に layer のアセットを作るには以下を参考にした</p>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/aws-cdk-node-modules-lambda-layer/">AWS CDK を使って node_modules を AWS Lambda Layers にデプロイするサンプル | Developers.IO</a></li>
 <li>簡単にいうと、 <code class="language-text">bin/{appName}.ts</code> がスタックを作る前に Layer のアセットとなる資材を作っておく</li>
 </ul>
 </li>
-<li><code class="language-text">cdk deploy</code>, <code class="language-text">cdk synth</code> の度に Layer の zip を作るのもコストが大きいので、もとになる package-lock.json のハッシュ値を比較して作る作らないを制御するようにした</li>
+<li><code class="language-text">cdk deploy</code>, <code class="language-text">cdk synth</code> の度に Layer の元を作るのもコストが大きいので（具体的には<code class="language-text">npm install</code>)、もとになる package-lock.json のハッシュ値を比較して作る作らないを制御するようにした</li>
 </ul>
 <h3>aws-lambda-nodejs でローカルでビルドするときのコツ</h3>
 <ul>
