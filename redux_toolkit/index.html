@@ -22,7 +22,7 @@
 <li>Basic => Intermediate => Advanced と段階があるけど、Advanced までやらないと非同期の処理が出てこないので最後までやる</li>
 </ul>
 </li>
-<li>redux toolkit をインストールすると、redux/redux-thunk が一緒に入ってくるので、最初から toolkit を使うのが便利かもしれない</li>
+<li>redux toolkit をインストールすると、redux/redux-thunk が一緒に入ってくるので、最初から toolkit を使うのが便利かもしれない（ただし redux のバージョンがちょっとだけ古い）</li>
 </ul>
 <h3>結果</h3>
 <ul>
@@ -69,7 +69,7 @@
 </ul>
 </li>
 <li>
-<p>知らないとびっくりされそうなポイント</p>
+<p>知らないとびっくりされそうなポイントだなと思ったが…</p>
 <ul>
 <li>redux toolkit のAPIに渡すものの中でやることなので、一度知ってしまえば混同することはなさそう</li>
 </ul>
@@ -79,7 +79,7 @@
 <ul>
 <li>dispatch(someAsyncAction()) は promise を返すわけではなし、reduxの管理するstateから実行結果を得るしかない</li>
 <li>containerをかませればできるのだけど、できれば redux の hooks を使いたい</li>
-<li>以下、個別のケースを3つ</li>
+<li>以下、個別のケースを2つ</li>
 </ul>
 <h5>認証のリダイレクト後に未認証、認証のチェックをしたい</h5>
 <ul>

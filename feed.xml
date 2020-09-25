@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 25 Sep 2020 04:00:30 GMT</lastBuildDate><item><title><![CDATA[Redux Toolkitの感想]]></title><description><![CDATA[これです Redux Toolkit | Redux Toolkit なぜ使おうと思ったか この辺を読んで「入れてもいいかな」から「やってみよう」になった(なるべくデフォルトで作って余計なものを入れたくない気持ちが邪魔をしていた) TypeScriptでReact…]]></description><link>https://fourside.github.ioredux_toolkit</link><guid isPermaLink="false">https://fourside.github.ioredux_toolkit</guid><pubDate>Fri, 25 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;これです&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 25 Sep 2020 04:34:33 GMT</lastBuildDate><item><title><![CDATA[Redux Toolkitの感想]]></title><description><![CDATA[これです Redux Toolkit | Redux Toolkit なぜ使おうと思ったか この辺を読んで「入れてもいいかな」から「やってみよう」になった(なるべくデフォルトで作って余計なものを入れたくない気持ちが邪魔をしていた) TypeScriptでReact…]]></description><link>https://fourside.github.ioredux_toolkit</link><guid isPermaLink="false">https://fourside.github.ioredux_toolkit</guid><pubDate>Fri, 25 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;これです&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://redux-toolkit.js.org/&quot;&gt;Redux Toolkit | Redux Toolkit&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -22,7 +22,7 @@
 &lt;li&gt;Basic =&gt; Intermediate =&gt; Advanced と段階があるけど、Advanced までやらないと非同期の処理が出てこないので最後までやる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;redux toolkit をインストールすると、redux/redux-thunk が一緒に入ってくるので、最初から toolkit を使うのが便利かもしれない&lt;/li&gt;
+&lt;li&gt;redux toolkit をインストールすると、redux/redux-thunk が一緒に入ってくるので、最初から toolkit を使うのが便利かもしれない（ただし redux のバージョンがちょっとだけ古い）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;結果&lt;/h3&gt;
 &lt;ul&gt;
@@ -69,7 +69,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;知らないとびっくりされそうなポイント&lt;/p&gt;
+&lt;p&gt;知らないとびっくりされそうなポイントだなと思ったが…&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;redux toolkit のAPIに渡すものの中でやることなので、一度知ってしまえば混同することはなさそう&lt;/li&gt;
 &lt;/ul&gt;
@@ -79,7 +79,7 @@
 &lt;ul&gt;
 &lt;li&gt;dispatch(someAsyncAction()) は promise を返すわけではなし、reduxの管理するstateから実行結果を得るしかない&lt;/li&gt;
 &lt;li&gt;containerをかませればできるのだけど、できれば redux の hooks を使いたい&lt;/li&gt;
-&lt;li&gt;以下、個別のケースを3つ&lt;/li&gt;
+&lt;li&gt;以下、個別のケースを2つ&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5&gt;認証のリダイレクト後に未認証、認証のチェックをしたい&lt;/h5&gt;
 &lt;ul&gt;
