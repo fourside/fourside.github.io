@@ -1,6 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 21 Oct 2020 09:15:17 GMT</lastBuildDate><item><title><![CDATA[XML Parserの比較]]></title><description><![CDATA[radikoのxmlをjsonにパースしたくて、npmモジュールの比較をしてみました 前提として、ランタイムは Node.js で、ブラウザでの実行は考慮していません 対象はこの3つにした xml2js - npm xml2json - npm fast-xml-parser…]]></description><link>https://fourside.github.iocompare_xml_parsers</link><guid isPermaLink="false">https://fourside.github.iocompare_xml_parsers</guid><pubDate>Wed, 21 Oct 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 21 Oct 2020 09:25:41 GMT</lastBuildDate><item><title><![CDATA[XML Parserの比較]]></title><description><![CDATA[radikoのxmlをjsonにパースしたくて、npmモジュールの比較をしてみました 前提 ランタイムは Node.js…]]></description><link>https://fourside.github.iocompare_xml_parsers</link><guid isPermaLink="false">https://fourside.github.iocompare_xml_parsers</guid><pubDate>Wed, 21 Oct 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;radikoのxmlをjsonにパースしたくて、npmモジュールの比較をしてみました&lt;/li&gt;
-&lt;li&gt;前提として、ランタイムは Node.js で、ブラウザでの実行は考慮していません&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前提&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ランタイムは Node.js で、ブラウザでの実行は考慮しない&lt;/li&gt;
+&lt;li&gt;パースの実行頻度はそれほど高くないので、実行速度は気にしない&lt;/li&gt;
+&lt;li&gt;コンテナに乗せる可能性はある（ファイルサイズやインストールの速度は気にする）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;対象はこの3つにした&lt;/p&gt;
 &lt;ul&gt;
@@ -12,7 +19,7 @@
 &lt;li&gt;
 &lt;p&gt;比較したときのコードはこれ&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/fourside/choice_xml_parsers&quot;&gt;fourside/choice&lt;em&gt;xml&lt;/em&gt;parsers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fourside/choice_xml_parsers&quot;&gt;fourside/choice_xml_parsers&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
