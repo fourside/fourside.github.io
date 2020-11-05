@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 05 Nov 2020 03:57:02 GMT</lastBuildDate><item><title><![CDATA[「クラウド破産を回避するIaC実践ガイド」を読んでCDKで再実装しました]]></title><description><![CDATA[クラウド破産を回避するInfrastructure as Code実践ガイド - KOS-MOS - BOOTH 技術書典9で見つけました AWSアカウントをセキュアに使うために、それ用のAWSリソースをTerraform…]]></description><link>https://fourside.github.iocloud_bankruptcy_iac</link><guid isPermaLink="false">https://fourside.github.iocloud_bankruptcy_iac</guid><pubDate>Thu, 05 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 05 Nov 2020 04:02:13 GMT</lastBuildDate><item><title><![CDATA[「クラウド破産を回避するIaC実践ガイド」を読んでCDKで再実装しました]]></title><description><![CDATA[クラウド破産を回避するInfrastructure as Code実践ガイド - KOS-MOS - BOOTH 技術書典9で見つけました AWSアカウントをセキュアに使うために、それ用のAWSリソースをTerraform…]]></description><link>https://fourside.github.iocloud_bankruptcy_iac</link><guid isPermaLink="false">https://fourside.github.iocloud_bankruptcy_iac</guid><pubDate>Thu, 05 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&quot;https://booth.pm/ja/items/2366365&quot;&gt;クラウド破産を回避するInfrastructure as Code実践ガイド - KOS-MOS - BOOTH&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -61,6 +61,7 @@
 &lt;p&gt;よくわからないタイミングでGuardDutyから通知がきて怖い…&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Severity: LOW なので放置してしまっているが…&lt;/li&gt;
+&lt;li&gt;とはいえ、ちょっとしたことでも通知が来ることによる安心感のほうが大きい&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
