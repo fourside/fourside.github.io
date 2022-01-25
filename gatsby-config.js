@@ -17,6 +17,7 @@ module.exports = {
         name: `assets`,
       },
     },
+    "gatsby-plugin-image",
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -36,7 +37,6 @@ module.exports = {
           "gatsby-remark-embed-gist",
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
         ],
       },
     },
@@ -51,52 +51,55 @@ module.exports = {
     {
       resolve: `gatsby-plugin-feed`,
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
+        query: `                          
+          {                               
+            site {                        
+              siteMetadata {              
+                title                     
+                description               
+                siteUrl                   
+                site_url: siteUrl         
+              }                           
+            }                             
+          }                               
         `,
         feeds: [
           {
             serialize: ({ query: { site, contentful } }) => {
-              return contentful.edges.map(edge => {
+              return contentful.edges.map((edge) => {
                 return Object.assign({}, {
                   title: edge.node.title,
                   description: edge.node.body.childMarkdownRemark.excerpt,
                   date: edge.node.publishDate,
                   url: site.siteMetadata.siteUrl + edge.node.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.slug,
-                  custom_elements: [{ "content:encoded": edge.node.body.childMarkdownRemark.html }],
-                })
-              })
+                  custom_elements: [{
+                    "content:encoded": edge.node.body.childMarkdownRemark.html,
+                  }],
+                });
+              });
             },
-            query: `
-              {
-                contentful: allContentfulBlogPost(
-                  sort: {fields: publishDate, order: DESC}, limit: 1000
-                ) {
-                  edges {
-                    node {
-                      title
-                      slug
-                      body {
-                        childMarkdownRemark {
-                          excerpt
-                          html
-                        }
-                      }
-                      publishDate(formatString: "YYYY/MM/DD")
-                    }
-                  }
-                }
-              }
+            query:
+              `                                                             
+              {                                                                  
+                contentful: allContentfulBlogPost(                               
+                  sort: {fields: publishDate, order: DESC}, limit: 1000          
+                ) {                                                              
+                  edges {                                                        
+                    node {                                                       
+                      title                                                      
+                      slug                                                       
+                      body {                                                     
+                        childMarkdownRemark {                                    
+                          excerpt                                                
+                          html                                                   
+                        }                                                        
+                      }                                                          
+                      publishDate(formatString: "YYYY/MM/DD")                    
+                    }                                                            
+                  }                                                              
+                }                                                                
+              }                                                                  
             `,
             output: "/feed.xml",
             title: "fourside.github.io",
@@ -127,9 +130,9 @@ module.exports = {
       resolve: `gatsby-source-gravatar`,
       options: {
         emails: [
-          { email: `fourside@gmail.com`, query: `?size=64` }
-        ]
-      }
+          { email: `fourside@gmail.com`, query: `?size=64` },
+        ],
+      },
     },
     `gatsby-plugin-offline`,
     {
@@ -140,4 +143,4 @@ module.exports = {
       },
     },
   ],
-}
+};
