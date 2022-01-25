@@ -1,12 +1,32 @@
-import React from "react"
+import React, { VFC } from "react"
 import { Link, graphql } from "gatsby"
+import type { PageProps } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { BlogPageContext } from "../../gatsby-node"
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+interface Props {
+  contentfulBlogPost: {
+    title: string;
+    publishDate: string;
+    body: {
+      childMarkdownRemark: {
+        excerpt: string;
+        html: string;
+      };
+    };
+  };
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+}
+
+const BlogPostTemplate: VFC<PageProps<Props, BlogPageContext>> = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost;
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext

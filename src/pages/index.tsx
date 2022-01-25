@@ -1,12 +1,38 @@
-import React from "react"
+import React, { VFC } from "react"
 import { Link, graphql } from "gatsby"
+import type { PageProps } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
+type Edge = {
+  node: {
+    title: string;
+    slug: string;
+    body: {
+      body: string;
+      childMarkdownRemark: {
+        excerpt: string;
+      };
+    };
+    publishDate: string;
+  };
+};
+
+interface Props {
+  site: {
+    siteMetadata: {
+      title: string
+    };
+  };
+  contentful: {
+    edges: Edge[]
+  };
+}
+
+const BlogIndex: VFC<PageProps<Props>> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.contentful.edges;
 

@@ -1,10 +1,19 @@
-import React from "react"
+import React, { VFC } from "react"
 import { graphql } from "gatsby"
+import type { PageProps } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const NotFoundPage = ({ data, location }) => {
+interface Props {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+}
+
+const NotFoundPage: VFC<PageProps<Props>> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
