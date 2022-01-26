@@ -1,16 +1,9 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React, { VFC } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { rhythm } from "../utils/typography";
 
-import { rhythm } from "../utils/typography"
-
-const Bio = () => {
+const Bio: VFC = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       gravatar {
@@ -24,9 +17,9 @@ const Bio = () => {
         }
       }
     }
-  `)
+  `);
 
-  const { author } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata;
   return (
     <div
       style={{
@@ -53,7 +46,7 @@ const Bio = () => {
         Written by <strong>{author.name}</strong>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;

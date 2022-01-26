@@ -1,21 +1,47 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { VFC } from "react";
+import { Link, graphql } from "gatsby";
+import type { PageProps } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import { rhythm } from "../utils/typography";
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+type Edge = {
+  node: {
+    title: string;
+    slug: string;
+    body: {
+      body: string;
+      childMarkdownRemark: {
+        excerpt: string;
+      };
+    };
+    publishDate: string;
+  };
+};
+
+interface Props {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+  contentful: {
+    edges: Edge[];
+  };
+}
+
+const BlogIndex: VFC<PageProps<Props>> = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title;
   const posts = data.contentful.edges;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO />
+      <Seo />
       <Bio />
       {posts.map(({ node }) => {
-        const title = node.title || node.slug
+        const title = node.title || node.slug;
         return (
           <article key={node.slug}>
             <header>
@@ -38,13 +64,13 @@ const BlogIndex = ({ data, location }) => {
               />
             </section>
           </article>
-        )
+        );
       })}
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query {
@@ -53,7 +79,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    contentful: allContentfulBlogPost(sort: {fields: publishDate, order: DESC}, limit: 1000) {
+    contentful: allContentfulBlogPost(sort: { fields: publishDate, order: DESC }, limit: 1000) {
       edges {
         node {
           title
@@ -69,4 +95,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
