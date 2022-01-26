@@ -10,13 +10,6 @@ module.exports = {
     siteUrl: `https://fourside.github.io/`,
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
-      },
-    },
     "gatsby-plugin-image",
     {
       resolve: `gatsby-transformer-remark`,
