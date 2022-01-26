@@ -1,6 +1,121 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 05 Nov 2020 04:02:13 GMT</lastBuildDate><item><title><![CDATA[「クラウド破産を回避するIaC実践ガイド」を読んでCDKで再実装しました]]></title><description><![CDATA[クラウド破産を回避するInfrastructure as Code実践ガイド - KOS-MOS - BOOTH 技術書典9で見つけました AWSアカウントをセキュアに使うために、それ用のAWSリソースをTerraform…]]></description><link>https://fourside.github.iocloud_bankruptcy_iac</link><guid isPermaLink="false">https://fourside.github.iocloud_bankruptcy_iac</guid><pubDate>Thu, 05 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://booth.pm/ja/items/2366365&quot;&gt;クラウド破産を回避するInfrastructure as Code実践ガイド - KOS-MOS - BOOTH&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 26 Jan 2022 14:22:16 GMT</lastBuildDate><item><title><![CDATA[ghコマンドをupdateしたい]]></title><description><![CDATA[日頃から ghコマンド にお世話になっていまして、PR作ったり、ターミナルからリポジトリをブラウザで開くのに使ったりしているのですが、不意にバナーが出ることで新バージョンがリリースされたことを知ります。そうするとGitHubのcli/cliリポジトリのRelease…]]></description><link>https://fourside.github.ioupgrade_gh</link><guid isPermaLink="false">https://fourside.github.ioupgrade_gh</guid><pubDate>Wed, 26 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;日頃から &lt;a href=&quot;https://github.com/cli/cli&quot; title=&quot;cli/cli: GitHub’s official command line tool&quot;&gt;ghコマンド&lt;/a&gt; にお世話になっていまして、PR作ったり、ターミナルからリポジトリをブラウザで開くのに使ったりしているのですが、不意にバナーが出ることで新バージョンがリリースされたことを知ります。そうするとGitHubのcli/cliリポジトリのReleaseページに行き、該当するバイナリを目で選んでダウンロードし、パスに通す。という手間をやっていたのですが、流石に手作業が多すぎると思い、簡単なスクリプトを書きました。&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist114138837&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-upgrade_gh-sh&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-shell  &quot;&gt;
+
+      
+&lt;div class=&quot;js-check-bidi js-blob-code-container blob-code-content&quot;&gt;
+
+  &lt;template class=&quot;js-file-alert-template&quot;&gt;
+  &lt;div data-view-component=&quot;true&quot; class=&quot;flash flash-warn flash-full d-flex flex-items-center&quot;&gt;
+  &lt;svg aria-hidden=&quot;true&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; data-view-component=&quot;true&quot; class=&quot;octicon octicon-alert&quot;&gt;
+    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+  
+    &lt;span&gt;
+      This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
+      &lt;a href=&quot;https://github.co/hiddenchars&quot; target=&quot;_blank&quot;&gt;Learn more about bidirectional Unicode characters&lt;/a&gt;
+    &lt;/span&gt;
+
+
+  &lt;div data-view-component=&quot;true&quot; class=&quot;flash-action&quot;&gt;        &lt;a href=&quot;{{ revealButtonHref }}&quot; data-view-component=&quot;true&quot; class=&quot;btn-sm btn&quot;&gt;  Show hidden characters
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/template&gt;
+&lt;template class=&quot;js-line-alert-template&quot;&gt;
+  &lt;span aria-label=&quot;This line has hidden Unicode characters&quot; data-view-component=&quot;true&quot; class=&quot;line-alert tooltipped tooltipped-e&quot;&gt;
+    &lt;svg aria-hidden=&quot;true&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; data-view-component=&quot;true&quot; class=&quot;octicon octicon-alert&quot;&gt;
+    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;/template&gt;
+
+  &lt;table class=&quot;highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip data-tagsearch-lang=&quot;Shell&quot; data-tagsearch-path=&quot;upgrade_gh.sh&quot;&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L1&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;#!&lt;/span&gt;/bin/bash&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L2&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;set&lt;/span&gt; -ex&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L3&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L4&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;~&lt;/span&gt;/work&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L5&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L6&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;GH_URL=&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;gh release view -R cli/cli --json assets -q .assets[].url &lt;span class=&quot;pl-k&quot;&gt;|&lt;/span&gt; grep linux_amd64.tar.gz&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L7&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;curl -LO &lt;span class=&quot;pl-smi&quot;&gt;$GH_URL&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L8&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L9&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;GH_FILE=&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;basename &lt;span class=&quot;pl-smi&quot;&gt;${GH_URL}&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L10&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;tar xzf &lt;span class=&quot;pl-smi&quot;&gt;$GH_FILE&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L11&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;GH_DIR=&lt;span class=&quot;pl-smi&quot;&gt;${GH_FILE&lt;span class=&quot;pl-k&quot;&gt;%&lt;/span&gt;.tar.gz}&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L12&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-L13&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-upgrade_gh-sh-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;ln -fs &lt;span class=&quot;pl-k&quot;&gt;~&lt;/span&gt;/work/&lt;span class=&quot;pl-smi&quot;&gt;${GH_DIR}&lt;/span&gt;/bin/gh &lt;span class=&quot;pl-k&quot;&gt;~&lt;/span&gt;/bin/gh&lt;/td&gt;
+        &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/fourside/ef69da72c47779591ee9ab23af096ea4/raw/86d22d3c01b32b2fde4487ef50edd262011fe501/upgrade_gh.sh&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/fourside/ef69da72c47779591ee9ab23af096ea4#file-upgrade_gh-sh&quot;&gt;
+          upgrade_gh.sh
+        &lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;今までちゃんと調べないで使ってたせいで、知らないオプションがいろいろありました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;-R&lt;/code&gt; オプションでカレントディレクトリ以外のリポジトリが参照できる&lt;/li&gt;
+&lt;li&gt;JSONのフォーマットで出力できて、さらにjqのような絞り込みができる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;updateサブコマンドの実装案とかissueにないか探してたら、オフィシャルの案内ではパッケージマネージャ経由でバージョンをあげろということみたいですね…。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[「クラウド破産を回避するIaC実践ガイド」を読んでCDKで再実装しました]]></title><description><![CDATA[クラウド破産を回避するInfrastructure as Code実践ガイド - KOS-MOS - BOOTH 技術書典9で見つけました AWSアカウントをセキュアに使うために、それ用のAWSリソースをTerraform…]]></description><link>https://fourside.github.iocloud_bankruptcy_iac</link><guid isPermaLink="false">https://fourside.github.iocloud_bankruptcy_iac</guid><pubDate>Thu, 05 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://booth.pm/ja/items/2366365&quot;&gt;クラウド破産を回避するInfrastructure as Code実践ガイド - KOS-MOS - BOOTH&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;技術書典9で見つけました&lt;/li&gt;
 &lt;li&gt;AWSアカウントをセキュアに使うために、それ用のAWSリソースをTerraformで作成しようという内容&lt;/li&gt;
@@ -9,11 +124,9 @@
 &lt;/ul&gt;
 &lt;h3&gt;動機&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;全くノーガードだったものの、ちゃんとしたい気持ちは常にあった&lt;/p&gt;
+&lt;li&gt;全くノーガードだったものの、ちゃんとしたい気持ちは常にあった
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://dev.classmethod.jp/articles/aws-1st-step-new-era-reiwa/&quot;&gt;AWSアカウントを作ったら最初にやるべきこと ～令和元年版～ | Developers.IO&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://dev.classmethod.jp/articles/aws-1st-step-new-era-reiwa/&quot;&gt;AWSアカウントを作ったら最初にやるべきこと ～令和元年版～ | Developers.IO&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;こういうのもブックマークして積んだままになってた&lt;/li&gt;
 &lt;li&gt;開発に &lt;em&gt;直接&lt;/em&gt; 関係しない部分だし…&lt;/li&gt;
@@ -25,13 +138,11 @@
 &lt;/ul&gt;
 &lt;h3&gt;やったこと&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Terraformで作成されているのを、AWS CDKで再実装&lt;/p&gt;
+&lt;li&gt;Terraformで作成されているのを、AWS CDKで再実装
 &lt;ul&gt;
 &lt;li&gt;CDKの勉強にもなるし&lt;/li&gt;
 &lt;li&gt;主に10章から18章、22章を対象にした&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;作ったリソースは以下の通り&lt;/p&gt;
+&lt;li&gt;作ったリソースは以下の通り
 &lt;ul&gt;
 &lt;li&gt;CloudTrail / AWS Config / GuardDuty / IAM Access Analyzer / Security Hub / Chatbot&lt;/li&gt;
 &lt;li&gt;これらに S3 / IAM / SNS らへんを連携させる&lt;/li&gt;
@@ -40,8 +151,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;作成したものはこちら&lt;/p&gt;
+&lt;li&gt;作成したものはこちら
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/fourside/cloud-bankruptcy&quot;&gt;fourside/cloud-bankruptcy&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -50,25 +160,21 @@
 &lt;h3&gt;やってみて&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;IAMロールらへんの理解が曖昧だったのが、 &lt;em&gt;少し&lt;/em&gt; 理解が進んだ&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;AWS Config の料金が意外とかかる&lt;/p&gt;
+&lt;li&gt;AWS Config の料金が意外とかかる
 &lt;ul&gt;
 &lt;li&gt;ビジネスで使うなら微々たるものかもだけど、対象ルールが200弱で 1.9 USD/月 くらいになった&lt;/li&gt;
 &lt;li&gt;逆にいうと、ほかはほとんどかからないのでやっておくのが得&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;よくわからないタイミングでGuardDutyから通知がきて怖い…&lt;/p&gt;
+&lt;li&gt;よくわからないタイミングでGuardDutyから通知がきて怖い…
 &lt;ul&gt;
 &lt;li&gt;Severity: LOW なので放置してしまっているが…&lt;/li&gt;
 &lt;li&gt;とはいえ、ちょっとしたことでも通知が来ることによる安心感のほうが大きい&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;利用料金のSlack通知が便利&lt;/p&gt;
+&lt;li&gt;利用料金のSlack通知が便利
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;「普段ならこれくらいなのに、今月の予測値が高い」みたいな状況に気付ける&lt;/p&gt;
+&lt;li&gt;「普段ならこれくらいなのに、今月の予測値が高い」みたいな状況に気付ける
 &lt;ul&gt;
 &lt;li&gt;後始末してなかったEC2リソース(インスタンスやElasticIP)があることに気づけた&lt;/li&gt;
 &lt;/ul&gt;
@@ -77,24 +183,21 @@
 &lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[XML Parserの比較]]></title><description><![CDATA[radikoのxmlをjsonにパースしたくて、npmモジュールの比較をしてみました 前提 ランタイムは Node.js…]]></description><link>https://fourside.github.iocompare_xml_parsers</link><guid isPermaLink="false">https://fourside.github.iocompare_xml_parsers</guid><pubDate>Wed, 21 Oct 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;radikoのxmlをjsonにパースしたくて、npmモジュールの比較をしてみました&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;前提&lt;/p&gt;
+&lt;li&gt;前提
 &lt;ul&gt;
 &lt;li&gt;ランタイムは Node.js で、ブラウザでの実行は考慮しない&lt;/li&gt;
 &lt;li&gt;パースの実行頻度はそれほど高くないので、実行速度は気にしない&lt;/li&gt;
 &lt;li&gt;コンテナに乗せる可能性はある（ファイルサイズやインストールの速度は気にする）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;対象はこの3つにした&lt;/p&gt;
+&lt;li&gt;対象はこの3つにした
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/xml2js&quot;&gt;xml2js - npm&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/xml2json&quot;&gt;xml2json - npm&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/fast-xml-parser&quot;&gt;fast-xml-parser - npm&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;比較したときのコードはこれ&lt;/p&gt;
+&lt;li&gt;比較したときのコードはこれ
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/fourside/choice_xml_parsers&quot;&gt;fourside/choice_xml_parsers&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -102,8 +205,7 @@
 &lt;/ul&gt;
 &lt;h3&gt;TL;DR&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;悩むけど fast-xml-parser がよさそう&lt;/p&gt;
+&lt;li&gt;悩むけど fast-xml-parser がよさそう
 &lt;ul&gt;
 &lt;li&gt;次点で xml2js&lt;/li&gt;
 &lt;/ul&gt;
@@ -129,21 +231,18 @@
 &lt;/ul&gt;
 &lt;h3&gt;使用感&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;xml2js&lt;/p&gt;
+&lt;li&gt;xml2js
 &lt;ul&gt;
 &lt;li&gt;プロミス用のメソッドがあり、若干野暮ったい(&lt;code class=&quot;language-text&quot;&gt;parseStringPromise&lt;/code&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;xml2json&lt;/p&gt;
+&lt;li&gt;xml2json
 &lt;ul&gt;
 &lt;li&gt;インストール時にローカルビルドが走る&lt;/li&gt;
 &lt;li&gt;パースの結果がJSONの文字列で、&lt;code class=&quot;language-text&quot;&gt;JSON.parse&lt;/code&gt; する必要がある&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;fast-xml-parse&lt;/p&gt;
+&lt;li&gt;fast-xml-parse
 &lt;ul&gt;
 &lt;li&gt;特になし&lt;/li&gt;
 &lt;/ul&gt;
@@ -161,8 +260,7 @@
 &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;stations&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;xml2js&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;属性はフラットに表現されるのではなく、オブジェクトとしてまとめて表現される&lt;/p&gt;
+&lt;li&gt;属性はフラットに表現されるのではなく、オブジェクトとしてまとめて表現される
 &lt;ul&gt;
 &lt;li&gt;フィールド名はオプションで変更可能&lt;/li&gt;
 &lt;/ul&gt;
@@ -180,8 +278,7 @@
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;xml2json&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;特にオプションの指定なく、分かりやすいJSONが得られた&lt;/p&gt;
+&lt;li&gt;特にオプションの指定なく、分かりやすいJSONが得られた
 &lt;ul&gt;
 &lt;li&gt;ただしオプションは他の2つに比べて粗い&lt;/li&gt;
 &lt;/ul&gt;
@@ -198,13 +295,12 @@
 &lt;h4&gt;fast-xml-parser&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;デフォルトで属性を無視ってきたので驚いたが、オプションで制御可能&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;属性はフラットに親フィールドにぶら下がる&lt;/p&gt;
+&lt;li&gt;属性はフラットに親フィールドにぶら下がる
 &lt;ul&gt;
 &lt;li&gt;ただしフィールド名にサフィックスをつけることができる（オプションで空文字を指定することもできる）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;下記の出力例には現れてないが、数値のノードはJSONでも数値として表現される（上記2つは &lt;code class=&quot;language-text&quot;&gt;&amp;quot;1&amp;quot;&lt;/code&gt; のように文字列になる)&lt;/li&gt;
+&lt;li&gt;下記の出力例には現れてないが、数値のノードはJSONでも数値として表現される（上記2つは &lt;code class=&quot;language-text&quot;&gt;&quot;1&quot;&lt;/code&gt; のように文字列になる)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token property&quot;&gt;&quot;stations&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -223,24 +319,21 @@
 &lt;/ul&gt;
 &lt;h3&gt;なぜ作ったのか&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;元ネタは過去にやった案件で、簡単に書いたテストのヘルパーの焼き直し&lt;/p&gt;
+&lt;li&gt;元ネタは過去にやった案件で、簡単に書いたテストのヘルパーの焼き直し
 &lt;ul&gt;
 &lt;li&gt;テスト用のデータの作成&lt;/li&gt;
 &lt;li&gt;たまたま MySQL だったので、bulk insert の形にしている&lt;/li&gt;
 &lt;li&gt;cliの形式を取ってはいるけど、完全に自分用であまり柔軟には作っていない&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;難しいことは一切していない&lt;/p&gt;
+&lt;li&gt;難しいことは一切していない
 &lt;ul&gt;
 &lt;li&gt;外部参照制約での値の決定とか…&lt;/li&gt;
 &lt;li&gt;DELETE 文も参照関係を考慮していないので、INSERT 文を生成してる順番を逆にしてるだけ&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;TypeScriptファイルにJSON定義しているので、デフォルト値や日時の生成など動的に値を決定できるのが便利ポイント&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;わざわざ書き直したのは、触ったことのないライブラリを使ってみたいというモチベーションもある&lt;/p&gt;
+&lt;li&gt;わざわざ書き直したのは、触ったことのないライブラリを使ってみたいというモチベーションもある
 &lt;ul&gt;
 &lt;li&gt;いずれもちょろっとしか触れてないので、そんなに何か言えることはない…&lt;/li&gt;
 &lt;/ul&gt;
@@ -269,8 +362,7 @@
 &lt;/ul&gt;
 &lt;h3&gt;なぜ使おうと思ったか&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;この辺を読んで「入れてもいいかな」から「やってみよう」になった(なるべくデフォルトで作って余計なものを入れたくない気持ちが邪魔をしていた)&lt;/p&gt;
+&lt;li&gt;この辺を読んで「入れてもいいかな」から「やってみよう」になった(なるべくデフォルトで作って余計なものを入れたくない気持ちが邪魔をしていた)
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://future-architect.github.io/articles/20200501/&quot;&gt;TypeScriptでReactをやるときは、小さいアプリでもReduxを最初から使ってもいいかもねというお話 | フューチャー技術ブログ&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://oukayuka.booth.pm/items/2367992&quot;&gt;りあクト！ TypeScriptで始めるつらくないReact開発 第3版【Ⅲ. React応用編】 - BOOTH&lt;/a&gt;&lt;/li&gt;
@@ -280,8 +372,7 @@
 &lt;/ul&gt;
 &lt;h3&gt;進め方&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Redux Toolkit に tutorial があるのでそれを読んで、実際にコードの置き換えをしていくだけ&lt;/p&gt;
+&lt;li&gt;Redux Toolkit に tutorial があるのでそれを読んで、実際にコードの置き換えをしていくだけ
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://redux-toolkit.js.org/tutorials/basic-tutorial&quot;&gt;Basic Tutorial | Redux Toolkit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Basic =&gt; Intermediate =&gt; Advanced と段階があるけど、Advanced までやらないと非同期の処理が出てこないので最後までやる&lt;/li&gt;
@@ -291,11 +382,9 @@
 &lt;/ul&gt;
 &lt;h3&gt;結果&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;実際にコード量が減った&lt;/p&gt;
+&lt;li&gt;実際にコード量が減った
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/fourside/filmemo/pull/29&quot;&gt;https://github.com/fourside/filmemo/pull/29&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fourside/filmemo/pull/29&quot;&gt;https://github.com/fourside/filmemo/pull/29&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;+586 -790&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -304,20 +393,17 @@
 &lt;li&gt;結果 actions.tsとその型情報を全部消せた&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;コードの見通しがよくなった&lt;/p&gt;
+&lt;li&gt;コードの見通しがよくなった
 &lt;ul&gt;
 &lt;li&gt;reducer は reducer.ts に、 action は actions.ts に、というようにしていたところ、子の state 毎に features/xxx といったディレクトリを切って、そこに reducer/action を収めるようにした&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;tutorial の通りに進めると、ある程度自然と &lt;a href=&quot;https://redux.js.org/style-guide/style-guide&quot;&gt;Redux の Style Guide&lt;/a&gt; の通りになるので安心感がある&lt;/p&gt;
+&lt;li&gt;tutorial の通りに進めると、ある程度自然と &lt;a href=&quot;https://redux.js.org/style-guide/style-guide&quot;&gt;Redux の Style Guide&lt;/a&gt; の通りになるので安心感がある
 &lt;ul&gt;
 &lt;li&gt;この安心感のおかげで、redux に対するうっすら苦手意識みたいなのはなくなった&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;使った API は &lt;code class=&quot;language-text&quot;&gt;createSlice&lt;/code&gt; &lt;code class=&quot;language-text&quot;&gt;configureStore&lt;/code&gt; くらいで、簡単に導入できる&lt;/p&gt;
+&lt;li&gt;使った API は &lt;code class=&quot;language-text&quot;&gt;createSlice&lt;/code&gt; &lt;code class=&quot;language-text&quot;&gt;configureStore&lt;/code&gt; くらいで、簡単に導入できる
 &lt;ul&gt;
 &lt;li&gt;あとで &lt;code class=&quot;language-text&quot;&gt;createSelector&lt;/code&gt; も触っておく&lt;/li&gt;
 &lt;/ul&gt;
@@ -326,15 +412,13 @@
 &lt;h3&gt;悩んだところ&lt;/h3&gt;
 &lt;h4&gt;reducer の中で state を mutate してるかのようなコードを書くこと&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://redux-toolkit.js.org/tutorials/intermediate-tutorial#mutable-update-logic&quot;&gt;Intermediate Tutorial | Redux Toolkit&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://redux-toolkit.js.org/tutorials/intermediate-tutorial#mutable-update-logic&quot;&gt;Intermediate Tutorial | Redux Toolkit&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;redux toolkit の中で immer.js を使っており、実際には mutate しない動作になるとのこと&lt;/li&gt;
 &lt;li&gt;通常の reducer では更新しない項目まで面倒みないといけないので、意図が分かりにくいコードになる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;知らないとびっくりされそうなポイントだなと思ったが…&lt;/p&gt;
+&lt;li&gt;知らないとびっくりされそうなポイントだなと思ったが…
 &lt;ul&gt;
 &lt;li&gt;redux toolkit のAPIに渡すものの中でやることなので、一度知ってしまえば混同することはなさそう&lt;/li&gt;
 &lt;/ul&gt;
@@ -354,14 +438,12 @@
 &lt;h5&gt;form送信して成功/失敗のチェック&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;成功したら画面遷移などさせたいし、失敗したら留まって欲しい&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;結果を redux で管理する？&lt;/p&gt;
+&lt;li&gt;結果を redux で管理する？
 &lt;ul&gt;
 &lt;li&gt;だとして、結果をクリアするタイミングとかエンバグしそうな箇所を作りたくない&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;とりあえず、成功時の処理をコールバックとして thunk action に渡すようにした&lt;/p&gt;
+&lt;li&gt;とりあえず、成功時の処理をコールバックとして thunk action に渡すようにした
 &lt;ul&gt;
 &lt;li&gt;これはあんまりよくないやり方だと思う…ので、thunk action を使わず、カスタムフックを作ってそこでプレーンなアクションを dispatch するのがきれいなように思える&lt;/li&gt;
 &lt;/ul&gt;
@@ -382,18 +464,16 @@
   &lt;span class=&quot;token number&quot;&gt;731&lt;/span&gt; B &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;-1 B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          build&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;static&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;js&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;.816b4f1d.chunk.js
   &lt;span class=&quot;token number&quot;&gt;443&lt;/span&gt; B &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;+3 B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          build&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;static&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;js&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9&lt;/span&gt;.1e585942.chunk.js
   &lt;span class=&quot;token number&quot;&gt;304&lt;/span&gt; B                 build&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;static&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;css&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;main.ed9b3d4b.chunk.css&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;おおよそ6KBの増加。これを許せるかどうかはプロジェクトに依るだろうな。とはいえ保守性に関わるのでできれば使いたいなと思います。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Intersection Observer API でサイドメニューの状態変化]]></title><description><![CDATA[作ったもの fourside/vanila_scroollspy
-intersection observable api モチベーション Intersection Observer API を使う処理の素振り サイドメニューの expand / collapse…]]></description><link>https://fourside.github.iointersection_observer_api</link><guid isPermaLink="false">https://fourside.github.iointersection_observer_api</guid><pubDate>Wed, 09 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;作ったもの&lt;/h3&gt;
+&lt;p&gt;おおよそ6KBの増加。これを許せるかどうかはプロジェクトに依るだろうな。とはいえ保守性に関わるのでできれば使いたいなと思います。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Intersection Observer API でサイドメニューの状態変化]]></title><description><![CDATA[作ったもの fourside/vanila_scroollspy intersection observable api モチベーション Intersection Observer API を使う処理の素振り サイドメニューの expand / collapse…]]></description><link>https://fourside.github.iointersection_observer_api</link><guid isPermaLink="false">https://fourside.github.iointersection_observer_api</guid><pubDate>Wed, 09 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;作ったもの&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/fourside/vanila_scroollspy&quot;&gt;fourside/vanila_scroollspy&lt;/a&gt;
-&lt;img src=&quot;//images.ctfassets.net/2zg7j2cy03uu/6Sdv5J3zHP2mead2qgs0q7/081957eaf3b8b3d08f89c343910ece57/intersection_observable_api.gif&quot; alt=&quot;intersection observable api&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fourside/vanila_scroollspy&quot;&gt;fourside/vanila_scroollspy&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/2zg7j2cy03uu/6Sdv5J3zHP2mead2qgs0q7/081957eaf3b8b3d08f89c343910ece57/intersection_observable_api.gif&quot; alt=&quot;intersection observable api&quot;&gt;&lt;/p&gt;
 &lt;h3&gt;モチベーション&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Intersection Observer API を使う処理の素振り&lt;/li&gt;
 &lt;li&gt;サイドメニューの expand / collapse を実装してみた&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Infinity Scroll の場合は以前試したことがある&lt;/p&gt;
+&lt;li&gt;Infinity Scroll の場合は以前試したことがある
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/fourside/filmemo/blob/develop/src/hooks/useIntersect.ts&quot;&gt;filmemo/useIntersect.ts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -402,8 +482,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h3&gt;参照&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API&quot;&gt;Intersection Observer API - Web API | MDN&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://ics.media/entry/190902/&quot;&gt;JSでのスクロール連動エフェクトにはIntersection Observerが便利 - ICS MEDIA&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://ics.media/entry/190902/&quot;&gt;JSでのスクロール連動エフェクトにはIntersection Observerが便利 - ICS MEDIA&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;オプションについての説明が分かりやすい&lt;/li&gt;
 &lt;li&gt;やりたかったこと全部ここにあるのよね…&lt;/li&gt;
@@ -414,8 +493,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;ul&gt;
 &lt;li&gt;こういった素振りをする行為は大事だなと思っていて、ちょっと前にやった案件でモーダルを出したくなったとき、以前バニラでモーダル実装したことがあったので、さっと作ることができた&lt;/li&gt;
 &lt;li&gt;なんとなくAPIを知っているくらいの状態だと、いざ必要になったときに調査のフェーズが挟まるし、見積もりも余計にバッファを積んでしまう&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;一回自分で作っておくと、これくらいの実装で可能だというのが分かるし、最低でも記憶のインデックスになる&lt;/p&gt;
+&lt;li&gt;一回自分で作っておくと、これくらいの実装で可能だというのが分かるし、最低でも記憶のインデックスになる
 &lt;ul&gt;
 &lt;li&gt;他のライブラリに依存しないで作れると他の環境でも応用しやすい&lt;/li&gt;
 &lt;/ul&gt;
@@ -437,8 +515,7 @@ intersection observable api モチベーション Intersection Observer API を�
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;元になるデータは &lt;a href=&quot;http://zipcloud.ibsnet.co.jp/&quot;&gt;zipcloud の加工済み csv ファイル&lt;/a&gt; を使った。ありがたく使わせてもらっています&lt;/p&gt;
+&lt;li&gt;元になるデータは &lt;a href=&quot;http://zipcloud.ibsnet.co.jp/&quot;&gt;zipcloud の加工済み csv ファイル&lt;/a&gt; を使った。ありがたく使わせてもらっています
 &lt;ul&gt;
 &lt;li&gt;zipcloud でも　WebAPI を公開してるのだけどなるべく自前でホストしたいと思って実装した&lt;/li&gt;
 &lt;/ul&gt;
@@ -447,8 +524,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h3&gt;構成&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;いわゆるサーバレス&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;aws-cdk&lt;/p&gt;
+&lt;li&gt;aws-cdk
 &lt;ul&gt;
 &lt;li&gt;Lambda Function&lt;/li&gt;
 &lt;li&gt;API Gateway&lt;/li&gt;
@@ -462,13 +538,11 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;li&gt;「データをどう使うか」から設計を始める&lt;/li&gt;
 &lt;li&gt;郵便番号をキーに検索するので、パーティションキーは郵便番号にする&lt;/li&gt;
 &lt;li&gt;ただし郵便番号はユニークではない。ひとつの郵便番号に複数の住所が紐付くパターンがある&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ソートキーが必要になるが、ふさわしい CSV のカラムはない&lt;/p&gt;
+&lt;li&gt;ソートキーが必要になるが、ふさわしい CSV のカラムはない
 &lt;ul&gt;
 &lt;li&gt;住所1や住所2だと重複するし、住所3だと空文字になる&lt;/li&gt;
 &lt;li&gt;住所1、住所2、住所3を連結して、ソートキーとした&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;それでさえ重複するケースがあるので、データ投入時にパーティションキー + ソートキーでユニークにする必要がある&lt;/p&gt;
+&lt;li&gt;それでさえ重複するケースがあるので、データ投入時にパーティションキー + ソートキーでユニークにする必要がある
 &lt;ul&gt;
 &lt;li&gt;例: 0741273 北海道 深川市 音江町&lt;/li&gt;
 &lt;/ul&gt;
@@ -480,12 +554,10 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;cdk deploy&lt;/code&gt; にからめて実行できればと考えたけど、何度も実行する必要はないのでコマンドを分けた&lt;/li&gt;
 &lt;li&gt;データ量は、ざっくり13万件弱&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html&quot;&gt;BatchWriteItem&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html&quot;&gt;BatchWriteItem&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;一度に複数レコードを書き込める API を使う&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ただし25件が上限で、超えると次のエラーメッセージ&lt;/p&gt;
+&lt;li&gt;ただし25件が上限で、超えると次のエラーメッセージ
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Member must have length less than or equal to 25, Member must have length greater than or equal to 1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;上記ドキュメントにもちゃんと書いてあったね…&lt;/li&gt;
@@ -494,8 +566,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;DynamoDBのテーブルの Billing mode をプロビジョニング済み(cdkでのデフォルト)にすると途中で失敗する&lt;/p&gt;
+&lt;li&gt;DynamoDBのテーブルの Billing mode をプロビジョニング済み(cdkでのデフォルト)にすると途中で失敗する
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;ProvisionedThroughputExceededException: The level of configured provisioned throughput for the table was exceeded. Consider increasing your provisioning level with the UpdateTable API.&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;オンデマンドにすること&lt;/li&gt;
@@ -506,17 +577,14 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h3&gt;misc&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Node.js でのファイルシステムのアクセスで、Stream API を使ってみた&lt;/p&gt;
+&lt;li&gt;Node.js でのファイルシステムのアクセスで、Stream API を使ってみた
 &lt;ul&gt;
 &lt;li&gt;一度にメモリに読み込むより省メモリでよいかと思ったけど、結局読み込んでからユニークにする処理を入れたりで、あんまり意味がなかった…&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;元々のモチベーションとして、決済機能を補助するものとして作っていて、今回はそのリファインしたもの&lt;/p&gt;
+&lt;li&gt;元々のモチベーションとして、決済機能を補助するものとして作っていて、今回はそのリファインしたもの
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;amplify 内の Lambda Function で実装していて、src ディレクトリ内をごっそりデプロイする形だったので、Lambda から csv を直接読むような形にしていた&lt;/p&gt;
+&lt;li&gt;amplify 内の Lambda Function で実装していて、src ディレクトリ内をごっそりデプロイする形だったので、Lambda から csv を直接読むような形にしていた
 &lt;ul&gt;
 &lt;li&gt;csv は未ソートだし、ファイルサイズは大きいしで、HTTPリクエスト時にファイル内検索するのはレスポンスが遅くなりすぎる&lt;/li&gt;
 &lt;li&gt;よって csv を事前にソートし、さらに郵便番号の頭2桁をキーにファイル分割するようにした&lt;/li&gt;
@@ -526,11 +594,9 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[aws-cdk の aws-lambda-nodejs で puppeteer を動かす]]></title><description><![CDATA[作ったものはこれ fourside/meigaza 映画の情報をスクレイプして、 Slack や IFTTT 経由 でモバイル通知する Lambda Function aws-cdk で Lambda とその周辺の リソースを定義した aws-cdk AWS…]]></description><link>https://fourside.github.ioaws_cdk_lambda_nodejs_puppeteer</link><guid isPermaLink="false">https://fourside.github.ioaws_cdk_lambda_nodejs_puppeteer</guid><pubDate>Mon, 07 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;作ったものはこれ&lt;/p&gt;
+&lt;li&gt;作ったものはこれ
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/fourside/meigaza&quot;&gt;fourside/meigaza&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fourside/meigaza&quot;&gt;fourside/meigaza&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;映画の情報をスクレイプして、 Slack や IFTTT 経由 でモバイル通知する Lambda Function&lt;/li&gt;
 &lt;/ul&gt;
@@ -542,27 +608,23 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h3&gt;aws-cdk&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;AWSのリソースをコードで表現できるフレームワーク&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;TypeScript で書ける&lt;/p&gt;
+&lt;li&gt;TypeScript で書ける
 &lt;ul&gt;
 &lt;li&gt;コード補完が効いてうれしい&lt;/li&gt;
 &lt;li&gt;パーミッションなどデフォで設定されるので細々定義しなくてよい&lt;/li&gt;
 &lt;li&gt;CloudFormation で yaml 書くのはつらかった…&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/latest/guide/home.html&quot;&gt;What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK)&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/latest/guide/home.html&quot;&gt;What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK)&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Getting started&lt;/code&gt; とか読んだ&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-nodejs-readme.html&quot;&gt;aws-lambda-nodejs module&lt;/a&gt; が便利&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-nodejs-readme.html&quot;&gt;aws-lambda-nodejs module&lt;/a&gt; が便利
 &lt;ul&gt;
 &lt;li&gt;まだ experimental な状態で、さらに semver を採用してない&lt;/li&gt;
 &lt;li&gt;Lambda のソースコードが TypeScript で書ける&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-readme.html&quot;&gt;aws-lambda module&lt;/a&gt; だと、CDK 部分は ts、Lambda 本体は common js になって、eslint しにくかったりコンテキストスイッチが発生したりで体験がよくない（eslint はディレクトリ毎に設定ファイルを置いても vs code が認識してくれなかった）&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-readme.html&quot;&gt;aws-lambda module&lt;/a&gt; だと、CDK 部分は ts、Lambda 本体は common js になって、eslint しにくかったりコンテキストスイッチが発生したりで体験がよくない（eslint はディレクトリ毎に設定ファイルを置いても vs code が認識してくれなかった）
 &lt;ul&gt;
 &lt;li&gt;なので experimental でも使う…&lt;/li&gt;
 &lt;/ul&gt;
@@ -573,8 +635,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h3&gt;puppeteer を動かす&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/alixaxel/chrome-aws-lambda&quot;&gt;chrome-aws-lambda&lt;/a&gt; を &lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-lambda.LayerVersion.html&quot;&gt;Lambda Layer&lt;/a&gt; に含める&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;cdk deploy 時に layer のアセットを作るには以下を参考にした&lt;/p&gt;
+&lt;li&gt;cdk deploy 時に layer のアセットを作るには以下を参考にした
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://dev.classmethod.jp/articles/aws-cdk-node-modules-lambda-layer/&quot;&gt;AWS CDK を使って node_modules を AWS Lambda Layers にデプロイするサンプル | Developers.IO&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;簡単にいうと、 &lt;code class=&quot;language-text&quot;&gt;bin/{appName}.ts&lt;/code&gt; がスタックを作る前に Layer のアセットとなる資材を作っておく&lt;/li&gt;
@@ -584,11 +645,9 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h3&gt;aws-lambda-nodejs でローカルでビルドするときのコツ&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-nodejs-readme.html#local-bundling&quot;&gt;aws-lambda-nodejs - Local bundling&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-nodejs-readme.html#local-bundling&quot;&gt;aws-lambda-nodejs - Local bundling&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;parcel を install してると、バンドル時にそれを使ってくれる&lt;/p&gt;
+&lt;li&gt;parcel を install してると、バンドル時にそれを使ってくれる
 &lt;ul&gt;
 &lt;li&gt;ただし &lt;a href=&quot;https://github.com/aws/aws-cdk/blob/v1.62.0/packages/%40aws-cdk/aws-lambda-nodejs/lib/bundlers.ts#L31&quot;&gt;Windows だと無視されるので &lt;/a&gt; WSL を使う&lt;/li&gt;
 &lt;/ul&gt;
@@ -597,8 +656,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Lambda を複数定義するときは、parcelのキャッシュディレクトリは分ける&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Layerに含める npm モジュールをバンドルしないようにする&lt;/p&gt;
+&lt;li&gt;Layerに含める npm モジュールをバンドルしないようにする
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;externalModules&lt;/code&gt; オプションに指定した npm は、&lt;a href=&quot;https://github.com/parcel-bundler/parcel#targets&quot;&gt;parcel の targets&lt;/a&gt; の &lt;code class=&quot;language-text&quot;&gt;includeNodeModules&lt;/code&gt; オプションに追加される&lt;/li&gt;
 &lt;/ul&gt;
@@ -606,16 +664,13 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h3&gt;misc&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;cdk synth, cdk deploy 中は、package.json が汚れる&lt;/p&gt;
+&lt;li&gt;cdk synth, cdk deploy 中は、package.json が汚れる
 &lt;ul&gt;
 &lt;li&gt;Ctrl-Cなどで中断すると残ってしまう&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;具体的には parcel のビルドターゲット&lt;/p&gt;
+&lt;li&gt;具体的には parcel のビルドターゲット
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;includeNodeModules&lt;/code&gt; には &lt;code class=&quot;language-text&quot;&gt;{npmName}: false&lt;/code&gt; という形で設定される&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;parcelのドキュメントに記載されてない形なので、正しく動かないのではと思ってしまったけど、そんなことはなかった&lt;/p&gt;
+&lt;li&gt;parcelのドキュメントに記載されてない形なので、正しく動かないのではと思ってしまったけど、そんなことはなかった
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/parcel-bundler/parcel/pull/4072/files#diff-55ff0e36af2108f79d8af002e7dc6841&quot;&gt;Pull Request #4072 - parcel-bundler/parcel&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -625,8 +680,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;WSLでWindows側のディレクトリを使ってビルドすると遅い&lt;/p&gt;
+&lt;li&gt;WSLでWindows側のディレクトリを使ってビルドすると遅い
 &lt;ul&gt;
 &lt;li&gt;WSL側のファイルシステムを使う&lt;/li&gt;
 &lt;li&gt;vs code は wsl extension を使う&lt;/li&gt;
@@ -643,37 +697,32 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;li&gt;自動でデプロイされるようにした&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;自動デプロイについて。Contentful で publish したら走るようにした。 jekyllだと mdファイルをpushしたらGitHub Pagesが自動でビルドしてくれるが、Gatsby + Headless CMS だと、ビルド時に CMS から記事を取得しなくてはならない。具体的には Contentful Webhook と GitHub Actions の組み合わせ。Contentful で記事を操作したら GitHub API にリクエストが飛ぶようにする(&lt;a href=&quot;https://www.contentful.com/developers/docs/concepts/webhooks/&quot;&gt;Webhooks | Contentful&lt;/a&gt;)。GitHub Action で、そのリクエストが飛んできたらビルドとデプロイが走るようにする。&lt;/p&gt;
-&lt;p&gt;&lt;del&gt;デプロイは、&lt;a href=&quot;https://www.npmjs.com/package/gh-pages&quot;&gt;gh-pages&lt;/a&gt; を使うだけ。GitHub Pagesのブランチを &lt;code class=&quot;language-text&quot;&gt;gh-pages&lt;/code&gt; にしておいて、ビルド成果物だけを push する。&lt;/del&gt; GitHub Actions では &lt;a href=&quot;https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token&quot;&gt;peaceiris/actions-gh-pages&lt;/a&gt; を使うようにした（直接 gh-pages を使うと &lt;code class=&quot;language-text&quot;&gt;fatal: empty ident name (for &amp;lt;runner@fv-az60.xxxxxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net&amp;gt;) not allowed&lt;/code&gt; なんて怒られてしまう。これには workflow 内で自動生成される GITHUB_TOKEN が必要らしいのだけど、便利な action (&lt;a href=&quot;https://github.com/peaceiris/actions-gh-pages&quot;&gt;peaceiris/actions-gh-pages&lt;/a&gt;)があるので使わせてもらった。）&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;デプロイは、&lt;a href=&quot;https://www.npmjs.com/package/gh-pages&quot;&gt;gh-pages&lt;/a&gt; を使うだけ。GitHub Pagesのブランチを &lt;code class=&quot;language-text&quot;&gt;gh-pages&lt;/code&gt; にしておいて、ビルド成果物だけを push する。&lt;/del&gt; GitHub Actions では &lt;a href=&quot;https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token&quot;&gt;peaceiris/actions-gh-pages&lt;/a&gt; を使うようにした（直接 gh-pages を使うと &lt;code class=&quot;language-text&quot;&gt;fatal: empty ident name (for &amp;lt;runner@fv-az60.xxxxxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net&gt;) not allowed&lt;/code&gt; なんて怒られてしまう。これには workflow 内で自動生成される GITHUB_TOKEN が必要らしいのだけど、便利な action (&lt;a href=&quot;https://github.com/peaceiris/actions-gh-pages&quot;&gt;peaceiris/actions-gh-pages&lt;/a&gt;)があるので使わせてもらった。）&lt;/p&gt;
 &lt;p&gt;GitHub Actions のドキュメントは以下を参照した。日本語版だとデッドリンクがあったりURLのフラグメントが設定されてなかったりする。余談だけどドキュメントの規模が大きくなったとき、一部だけ見て理解できるようにコンテキストを少なくして作成できたらいいだろうなと思うものの、もともとボリュームが大きいのでできるだけスリムに書きたいとも思うし、塩梅は難しいな。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.github.com/en/actions/reference/events-that-trigger-workflows#repository_dispatch&quot;&gt;Events that trigger workflows - GitHub Docs&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/actions/reference/events-that-trigger-workflows#repository_dispatch&quot;&gt;Events that trigger workflows - GitHub Docs&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;repository_dispatch&lt;/code&gt; イベントを発生させるとworkflowをキックできるみたい&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event&quot;&gt;Repositories - GitHub Docs&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event&quot;&gt;Repositories - GitHub Docs&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;上記イベントを発生させる GitHub API&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token&quot;&gt;Creating a personal access token - GitHub Docs&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token&quot;&gt;Creating a personal access token - GitHub Docs&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;外部サイトの Webhook に与える認証について&lt;/li&gt;
 &lt;li&gt;一年で revoke されるっぽいので、ブログ更新を一年サボると動かなくなる&lt;/li&gt;
 &lt;li&gt;今回は repo &gt; public_repo でよい&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;その乗せ方&lt;/p&gt;
+&lt;li&gt;その乗せ方
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/rest/overview/resources-in-the-rest-api#oauth2-token-sent-in-a-header&quot;&gt;Resources in the REST API - GitHub Docs&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://developer.github.com/v3/#user-agent-required&quot;&gt;GitHub API v3 | GitHub Developer Guide&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.github.com/v3/#user-agent-required&quot;&gt;GitHub API v3 | GitHub Developer Guide&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;GitHub APIは、User-Agent ヘッダがないとエラーになるみたい。なんか適当なのを入れておく&lt;/li&gt;
 &lt;/ul&gt;
@@ -684,18 +733,15 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h4&gt;Headless CMS&lt;/h4&gt;
 &lt;p&gt;なんで Headless CMS にしたか。ローカルにファイル作ってもいいかとも思ったけど、知らないものは触っておくことにした。後付で理由も考えてみたけど…。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;jekyllの場合&lt;/p&gt;
+&lt;li&gt;jekyllの場合
 &lt;ul&gt;
 &lt;li&gt;ディレクトリやファイル名で記事のURLが決まる。面倒くさい&lt;/li&gt;
 &lt;li&gt;リポジトリが手元にある必要がある&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Headless CMSの場合&lt;/p&gt;
+&lt;li&gt;Headless CMSの場合
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Webフォームで入力する。そこまで面倒じゃない&lt;/p&gt;
+&lt;li&gt;Webフォームで入力する。そこまで面倒じゃない
 &lt;ul&gt;
 &lt;li&gt;画面開いてログインするのは面倒くさい&lt;/li&gt;
 &lt;/ul&gt;
@@ -707,8 +753,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;Contentful&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;UIの分かりやすさはある。探してるものがすぐ見つかる&lt;/p&gt;
+&lt;li&gt;UIの分かりやすさはある。探してるものがすぐ見つかる
 &lt;ul&gt;
 &lt;li&gt;編集画面はちょっと狭くて好きではない&lt;/li&gt;
 &lt;li&gt;publishDate、デフォで現在時刻を入れてて欲しい&lt;/li&gt;
@@ -721,26 +766,22 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;ul&gt;
 &lt;li&gt;tutorial 分かりやすい。React を触ったことがあればすいすい進む&lt;/li&gt;
 &lt;li&gt;GraphiQL がついてくるので、クエリの結果を確かめるのが簡単&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;plugin をもりもり入れる&lt;/p&gt;
+&lt;li&gt;plugin をもりもり入れる
 &lt;ul&gt;
 &lt;li&gt;gatsby-config.js が太るし、ここに Graphql のクエリを書く場合もあり、リッチなものを作ろうと思ったらつらくなりそう&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Markdown ファイルと Contentful を併存させようとして遭遇したエラーがちょっと分かりにかった&lt;/p&gt;
+&lt;li&gt;Markdown ファイルと Contentful を併存させようとして遭遇したエラーがちょっと分かりにかった
 &lt;ul&gt;
 &lt;li&gt;結局 Markdown は Contentful に手作業で移行した…&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[作ったものの説明]]></title><description><![CDATA[今まで作ったものの説明をしてこなかったので簡単に説明しようと思います。 就職活動でGitHubのURLを乗せても、README…]]></description><link>https://fourside.github.iodesc_repo</link><guid isPermaLink="false">https://fourside.github.iodesc_repo</guid><pubDate>Tue, 13 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;今まで作ったものの説明をしてこなかったので簡単に説明しようと思います。&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;就職活動でGitHubのURLを乗せても、READMEに書くのは簡単な説明と使い方くらいなので分かりにくいと思うので…。&lt;/p&gt;
+&lt;li&gt;就職活動でGitHubのURLを乗せても、READMEに書くのは簡単な説明と使い方くらいなので分かりにくいと思うので…。
 &lt;ul&gt;
 &lt;li&gt;主に「なぜ作るのか」、「何を学んだか」&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;基本的には、自分の問題を解決するため&lt;/p&gt;
+&lt;li&gt;基本的には、自分の問題を解決するため
 &lt;ul&gt;
 &lt;li&gt;次に、興味のあるライブラリなどを試すため&lt;/li&gt;
 &lt;/ul&gt;
@@ -759,8 +800,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;学んだ技術&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;WebComponents&lt;/p&gt;
+&lt;li&gt;WebComponents
 &lt;ul&gt;
 &lt;li&gt;当時ようやくFirefoxで使えるようになったのと、技術書典でWebComponentsの本を買ったことが理由&lt;/li&gt;
 &lt;/ul&gt;
@@ -787,8 +827,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;学んだ技術&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;docker&lt;/p&gt;
+&lt;li&gt;docker
 &lt;ul&gt;
 &lt;li&gt;もともと素朴に作っていたものをコンテナ化した&lt;/li&gt;
 &lt;li&gt;そうすることでミドルウェアの設定などもgitで管理できるようになり、ポータビリティが得られた&lt;/li&gt;
@@ -798,8 +837,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;工夫&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;docker-compose.ymlを開発用と本番用に分けたところ&lt;/p&gt;
+&lt;li&gt;docker-compose.ymlを開発用と本番用に分けたところ
 &lt;ul&gt;
 &lt;li&gt;本番用にはfluentd/mongodbを足して、ログの集積をしている&lt;/li&gt;
 &lt;/ul&gt;
@@ -821,20 +859,17 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;学んだ技術&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;バックエンドはgolang&lt;/p&gt;
+&lt;li&gt;バックエンドはgolang
 &lt;ul&gt;
 &lt;li&gt;goroutine, channelの基本的な使い方&lt;/li&gt;
 &lt;li&gt;パッケージ管理はいろいろ変遷があったようだがdepを使うようにした&lt;/li&gt;
 &lt;li&gt;ビルドにはmakeを使い、静的解析をするようにした&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;フロントエンドはreact&lt;/p&gt;
+&lt;li&gt;フロントエンドはreact
 &lt;ul&gt;
 &lt;li&gt;途中でhooksに書き換えてみたり、reduxに入門したりした&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ビルドツールはparcelにした&lt;/p&gt;
+&lt;li&gt;ビルドツールはparcelにした
 &lt;ul&gt;
 &lt;li&gt;勝手に必要なものが裏で揃えられるので楽だけど、たまにうまく行かなくなるときがある…&lt;/li&gt;
 &lt;li&gt;小さく始めるときの最初のビルドツールとして最適だと思った&lt;/li&gt;
@@ -846,8 +881,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;工夫&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;polling処理でダウンロードの進捗表示をするところ&lt;/p&gt;
+&lt;li&gt;polling処理でダウンロードの進捗表示をするところ
 &lt;ul&gt;
 &lt;li&gt;バックエンドはgoroutineからyoutube-dlの標準出力を抜き取ってレスポンスを返す&lt;/li&gt;
 &lt;li&gt;フロントエンドはWebWorkerでサーバリクエストを送り、メインスレッドにサーバレスポンスの一部を返す&lt;/li&gt;
@@ -856,14 +890,12 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;改善点&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;削除APIができていない&lt;/p&gt;
+&lt;li&gt;削除APIができていない
 &lt;ul&gt;
 &lt;li&gt;DBを使ってない（ファイルシステムを直接見てレスポンスを作っている）ので、一意にしにくい&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;reduxを使い始めたが、きちんと理解した感じがしない&lt;/p&gt;
+&lt;li&gt;reduxを使い始めたが、きちんと理解した感じがしない
 &lt;ul&gt;
 &lt;li&gt;ミドルウェアまで入れたくない気持ちがあるが実際はどうなのか&lt;/li&gt;
 &lt;/ul&gt;
@@ -876,8 +908,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;背景&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;映画をよく見るようになった&lt;/p&gt;
+&lt;li&gt;映画をよく見るようになった
 &lt;ul&gt;
 &lt;li&gt;東京にある名画座のスケジュールを簡単に知りたくなった&lt;/li&gt;
 &lt;li&gt;気づいたら前売り券を買える期間が過ぎていた&lt;/li&gt;
@@ -904,8 +935,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;背景&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;フロントエンド(SPA)の開発でモックサーバが欲しくなった&lt;/p&gt;
+&lt;li&gt;フロントエンド(SPA)の開発でモックサーバが欲しくなった
 &lt;ul&gt;
 &lt;li&gt;特にページャの実装で、特定のクエリ文字列を含むURLのとき、それっぽいJSONを返してほしい&lt;/li&gt;
 &lt;li&gt;nginxのlocationはクエリまで含めて判定してくれない&lt;/li&gt;
@@ -919,8 +949,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;工夫&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;ライブラリを使わないようにnodeのapiだけで作ってみた&lt;/p&gt;
+&lt;li&gt;ライブラリを使わないようにnodeのapiだけで作ってみた
 &lt;ul&gt;
 &lt;li&gt;使うときnpm installする必要がなくなって、シンプルなものになった&lt;/li&gt;
 &lt;/ul&gt;
@@ -930,8 +959,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h4&gt;改善点&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;typescript化&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;テストがない&lt;/p&gt;
+&lt;li&gt;テストがない
 &lt;ul&gt;
 &lt;li&gt;ルーティング定義のファイルを実行時引数で渡せるようにしないとな…&lt;/li&gt;
 &lt;/ul&gt;
@@ -948,8 +976,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;学んだ技術&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;よくあるモーダルの実装方法&lt;/p&gt;
+&lt;li&gt;よくあるモーダルの実装方法
 &lt;ul&gt;
 &lt;li&gt;世の中のモーダルはどう実装されているのか、いろいろ調べてみるとだいたい同じだったのでそのように実装した&lt;/li&gt;
 &lt;/ul&gt;
@@ -971,8 +998,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h4&gt;背景&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;物理的な勤怠打刻からWebの打刻に移行した際、打刻を忘れてしまうという話を聞いた&lt;/p&gt;
+&lt;li&gt;物理的な勤怠打刻からWebの打刻に移行した際、打刻を忘れてしまうという話を聞いた
 &lt;ul&gt;
 &lt;li&gt;出退勤の時間になったらブラウザで打刻用のサイトを開くアプリを作ろうと思った&lt;/li&gt;
 &lt;/ul&gt;
@@ -991,8 +1017,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h4&gt;改善点&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;cronの書式が分かりにくい（がパターンの表現力は高いので、完全に置き換えるものは思いつかず…）&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;コンポーネントが大きいので分割したい&lt;/p&gt;
+&lt;li&gt;コンポーネントが大きいので分割したい
 &lt;ul&gt;
 &lt;li&gt;1個のFormを分割するのは冗長な部分が増えそうで躊躇してしまう&lt;/li&gt;
 &lt;/ul&gt;
@@ -1002,36 +1027,29 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h2&gt;key note&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;リリースモデルについて、わかりやすいけどOpenJDKはLTS出ないのね&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;jdk11が今年9月に出る(予定通り)&lt;/p&gt;
+&lt;li&gt;jdk11が今年9月に出る(予定通り)
 &lt;ul&gt;
 &lt;li&gt;JEPsはこれからも追加される&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;mission controll と flight recorder&lt;/p&gt;
+&lt;li&gt;mission controll と flight recorder
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Eclipse pluginで開けて便利&lt;/p&gt;
+&lt;li&gt;Eclipse pluginで開けて便利
 &lt;ul&gt;
 &lt;li&gt;下部のペインにスタックトレースからコードにジャンプできる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;パフォーマンスの問題3例での見え方&lt;/p&gt;
+&lt;li&gt;パフォーマンスの問題3例での見え方
 &lt;ul&gt;
 &lt;li&gt;LinkedListのループ内のget&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;シングルトンインスタンス(ロガーとか)&lt;/p&gt;
+&lt;li&gt;シングルトンインスタンス(ロガーとか)
 &lt;ul&gt;
 &lt;li&gt;これどういうシチュエーションの問題だっけ&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ループ内でオートボクシングが発生しててGC走りまくってる&lt;/p&gt;
+&lt;li&gt;ループ内でオートボクシングが発生しててGC走りまくってる
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;赤いアイコン出ないので問題なさそうに見えるので注意&lt;/p&gt;
+&lt;li&gt;赤いアイコン出ないので問題なさそうに見えるので注意
 &lt;ul&gt;
 &lt;li&gt;どう気づけばいいんだ？&lt;/li&gt;
 &lt;/ul&gt;
@@ -1042,8 +1060,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;リリース未定だったりする新しい機能&lt;/p&gt;
+&lt;li&gt;リリース未定だったりする新しい機能
 &lt;ul&gt;
 &lt;li&gt;Valhalla&lt;/li&gt;
 &lt;li&gt;Portola&lt;/li&gt;
@@ -1053,16 +1070,13 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;li&gt;ZGC&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;fn&lt;/p&gt;
+&lt;li&gt;fn
 &lt;ul&gt;
 &lt;li&gt;サーバレス&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;cli&lt;/p&gt;
+&lt;li&gt;cli
 &lt;ul&gt;
 &lt;li&gt;ボイラープレートを吐いたり&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ローカルサーバ起動できたり&lt;/p&gt;
+&lt;li&gt;ローカルサーバ起動できたり
 &lt;ul&gt;
 &lt;li&gt;個人的にこれがすごく良いと思う&lt;/li&gt;
 &lt;/ul&gt;
@@ -1070,8 +1084,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;li&gt;アプリをデプロイできたり&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;javaで単一の処理で書けてしまうが、裏では複数のコンテナが実行されてるやつのデモ&lt;/p&gt;
+&lt;li&gt;javaで単一の処理で書けてしまうが、裏では複数のコンテナが実行されてるやつのデモ
 &lt;ul&gt;
 &lt;li&gt;flickrから車の写真を集めてきて最終的にslackにポストしまくる&lt;/li&gt;
 &lt;/ul&gt;
@@ -1091,9 +1104,15 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;h2&gt;Project Valhalla&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Value Types&lt;/li&gt;
-&lt;li&gt;Generics Specialization&lt;/li&gt;
-&lt;li&gt;Var Handles&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Value Types&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Generics Specialization&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Var Handles&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;名前の由来&lt;/p&gt;
 &lt;ul&gt;
@@ -1104,46 +1123,44 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;p&gt;シンタックス&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;例えばこんなの&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;value class Hoge { }&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;value class Hoge { } &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;クラスのように書けてプリミティブのように振る舞う&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;ヘッダがない&lt;/p&gt;
+&lt;li&gt;ヘッダがない
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;オブジェクトのメタ情報&lt;/p&gt;
+&lt;li&gt;オブジェクトのメタ情報
 &lt;ul&gt;
 &lt;li&gt;何のインスタンスなのかとか&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;モニタがない&lt;/p&gt;
+&lt;li&gt;モニタがない
 &lt;ul&gt;
 &lt;li&gt;ロックの情報&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;キャッシュミスしない&lt;/p&gt;
+&lt;li&gt;キャッシュミスしない
 &lt;ul&gt;
 &lt;li&gt;これはどういう理屈だっけ…&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;“What Would Int Do”&lt;/li&gt;
+&lt;li&gt;&quot;What Would Int Do&quot;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;ジェネリクス&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;どう扱えるの？&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;List&amp;lt;int&amp;gt; list = ...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;List&amp;lt;int&gt; list = ...&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;IntStreamとかToIntFunctionとかなくせる&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IntStreamとかToIntFunctionとかなくせる&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;クラスの継承ツリー&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;-- any(仮)
@@ -1164,8 +1181,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;p&gt;余談&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;メモリバリア&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;volatile&lt;/p&gt;
+&lt;li&gt;volatile
 &lt;ul&gt;
 &lt;li&gt;この辺理解できてない&lt;/li&gt;
 &lt;/ul&gt;
@@ -1173,42 +1189,34 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Curing you Domain Model Anemia…&lt;/h2&gt;
+&lt;h2&gt;Curing you Domain Model Anemia...&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;DDDに触れてからのコードスメル&lt;/p&gt;
+&lt;li&gt;DDDに触れてからのコードスメル
 &lt;ul&gt;
 &lt;li&gt;フォーカスする話題の粒度が真逆というか振り幅がでかいというか&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Martin Fowlerの”When to make a type”&lt;/p&gt;
+&lt;li&gt;Martin Fowlerの&quot;When to make a type&quot;
 &lt;ul&gt;
 &lt;li&gt;疑問に思ったらクラスを作れ&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ライブコーディング！&lt;/p&gt;
+&lt;li&gt;ライブコーディング！
 &lt;ul&gt;
 &lt;li&gt;githubやyoutubeにサンプルあるから探してくれ&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;dddするときのモデルに特定のフレームワークを使っても(よい|ダメ)派がある&lt;/p&gt;
+&lt;li&gt;dddするときのモデルに特定のフレームワークを使っても(よい|ダメ)派がある
 &lt;ul&gt;
 &lt;li&gt;使ってもいい派&lt;/li&gt;
 &lt;li&gt;今回はjpaのエンティティをモデルとして扱う&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ex. 「primitiveなフィールド、マイナスにしたくない」&lt;/p&gt;
+&lt;li&gt;ex. 「primitiveなフィールド、マイナスにしたくない」
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;オブジェクトにしちゃう&lt;/p&gt;
+&lt;li&gt;オブジェクトにしちゃう
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;イミュータブルにする&lt;/p&gt;
+&lt;li&gt;イミュータブルにする
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;コンストラクタはprivateにして、static factoryを作る&lt;/p&gt;
+&lt;li&gt;コンストラクタはprivateにして、static factoryを作る
 &lt;ul&gt;
 &lt;li&gt;その中で引数の検査をする&lt;/li&gt;
 &lt;/ul&gt;
@@ -1218,8 +1226,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/li&gt;
 &lt;li&gt;hashcode/eqaulsの実装忘れずに&lt;/li&gt;
 &lt;li&gt;toStringはデバッグ情報を出すようにすべき&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Formattable知ってる？&lt;/p&gt;
+&lt;li&gt;Formattable知ってる？
 &lt;ul&gt;
 &lt;li&gt;ビジネス要件での出力&lt;/li&gt;
 &lt;li&gt;国際化するときも使える、詳しくはjavadoc&lt;/li&gt;
@@ -1230,24 +1237,20 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;ComparisonChain使ってたけどよく知らない、何がうれしいか調べておく&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;enumコンストラクタはjava8での書き方があるらしい&lt;/p&gt;
+&lt;li&gt;enumコンストラクタはjava8での書き方があるらしい
 &lt;ul&gt;
 &lt;li&gt;今回は時間の都合でjava7のやり方（おなじみやつ）&lt;/li&gt;
 &lt;li&gt;コードサンプル調べておく&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;JPAでのtips&lt;/p&gt;
+&lt;li&gt;JPAでのtips
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;イミュータブルなエンティティにするには&lt;/p&gt;
+&lt;li&gt;イミュータブルなエンティティにするには
 &lt;ul&gt;
 &lt;li&gt;コンストラクタはprotected&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;フィールドにオブジェクトを持つ場合&lt;/p&gt;
+&lt;li&gt;フィールドにオブジェクトを持つ場合
 &lt;ul&gt;
 &lt;li&gt;それがバリューオブジェクトだったら@ElementCollection&lt;/li&gt;
 &lt;li&gt;エンティティだったらいつもの@OneToManyなど&lt;/li&gt;
@@ -1259,17 +1262,15 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Get ready for a cloud native…&lt;/h2&gt;
+&lt;h2&gt;Get ready for a cloud native...&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;k8s + istio でコンテナのメトリクスを簡単に取得できる話&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;k8sで環境ごとのurlを用意しなくてよくなる&lt;/p&gt;
+&lt;li&gt;k8sで環境ごとのurlを用意しなくてよくなる
 &lt;ul&gt;
 &lt;li&gt;アプリ側で使うのは論理的なURL&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;サイドカーコンテナ&lt;/p&gt;
+&lt;li&gt;サイドカーコンテナ
 &lt;ul&gt;
 &lt;li&gt;mainコンテナとproxyコンテナのセット&lt;/li&gt;
 &lt;/ul&gt;
@@ -1277,26 +1278,22 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;li&gt;istio使うとgrafanaでモニタリングのダッシュボードが表示される&lt;/li&gt;
 &lt;li&gt;eclipse micro profile&lt;/li&gt;
 &lt;li&gt;server.xml&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;リクエストに関する設定(ルール)&lt;/p&gt;
+&lt;li&gt;リクエストに関する設定(ルール)
 &lt;ul&gt;
 &lt;li&gt;コネクションタイムアウト&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;レスポンスのディレイ設定&lt;/p&gt;
+&lt;li&gt;レスポンスのディレイ設定
 &lt;ul&gt;
 &lt;li&gt;テストしやすくてよい！&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;リクエストヘッダにtrace-idみたいなのがついている&lt;/p&gt;
+&lt;li&gt;リクエストヘッダにtrace-idみたいなのがついている
 &lt;ul&gt;
 &lt;li&gt;これを追うとどのコンテナを通っていったか追跡できる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;サーキットブレーカーという単語が出てきたけど、それが何だっていうところ聞き逃した…&lt;/p&gt;
+&lt;li&gt;サーキットブレーカーという単語が出てきたけど、それが何だっていうところ聞き逃した…
 &lt;ul&gt;
 &lt;li&gt;言葉の意味は「一時的に止める措置」？&lt;/li&gt;
 &lt;/ul&gt;
@@ -1304,7 +1301,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;service meshes: key takeaways
 - transparently add technical cross-cutting concerns.
-- think &amp;quot;AOP for applications&amp;quot;
+- think &quot;AOP for applications&quot;
 - routing, load-balancing, resiliency, telemetry, auth
 - integrates well with Java enterprise approach:
     - business logic is responsibility of the applications
@@ -1312,8 +1309,7 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h3&gt;全体的に&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Cloudというかコンテナ周りというかにフォーカスされているのを確認した。&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;面白かったのは新しい機能だったり普段の暮らしに近いコーディング周りだったり。&lt;/p&gt;
+&lt;li&gt;面白かったのは新しい機能だったり普段の暮らしに近いコーディング周りだったり。
 &lt;ul&gt;
 &lt;li&gt;DDDは座学な印象あるけど実地で見せてもらうと楽しい。&lt;/li&gt;
 &lt;/ul&gt;
@@ -1336,11 +1332,9 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;h3&gt;好ましいと思っていること、大事にしていること&lt;/h3&gt;
 &lt;p&gt;プログラマーとして働いていて気にしていることです。当たり前といえば当たり前のことではある。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;テキストを好んで使うこと&lt;/p&gt;
+&lt;li&gt;テキストを好んで使うこと
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;ドキュメントもインフラも何でもテキストで表現したらdiffも取れるしgitで管理できていいね、くらいの意味&lt;/p&gt;
+&lt;li&gt;ドキュメントもインフラも何でもテキストで表現したらdiffも取れるしgitで管理できていいね、くらいの意味
 &lt;ul&gt;
 &lt;li&gt;wordやエクセルで管理するのはウッと思う&lt;/li&gt;
 &lt;li&gt;人によってはマークダウンの書式が構造化された文書に見えないかもしれない（プレビューが必須だと面倒臭さが先に立ってしまう）&lt;/li&gt;
@@ -1348,50 +1342,42 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;チーム全体で合意を取ること&lt;/p&gt;
+&lt;li&gt;チーム全体で合意を取ること
 &lt;ul&gt;
 &lt;li&gt;プロダクトは自分たちで作っていくという意識を持てる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ツールやWebサービスを取り入れること&lt;/p&gt;
+&lt;li&gt;ツールやWebサービスを取り入れること
 &lt;ul&gt;
 &lt;li&gt;どんどん便利になっていきたい&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;自動化&lt;/p&gt;
+&lt;li&gt;自動化
 &lt;ul&gt;
 &lt;li&gt;どんどん便利になっていきたい&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;時間を生むので圧倒的に正しい&lt;/p&gt;
+&lt;li&gt;時間を生むので圧倒的に正しい
 &lt;ul&gt;
 &lt;li&gt;運用系のツールもどんどん取り入れたいのだけど、チームの合意がないまま使い始めるとつらいはずなので、おすすめしていく運動とセットだよなと思っている&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;便利になること&lt;/p&gt;
+&lt;li&gt;便利になること
 &lt;ul&gt;
 &lt;li&gt;プログラマとしての使命だと思う&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;名前付け&lt;/p&gt;
+&lt;li&gt;名前付け
 &lt;ul&gt;
 &lt;li&gt;Matzの「名前重要」の教えを念頭に&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;クラス設計の第一歩と思っている&lt;/p&gt;
+&lt;li&gt;クラス設計の第一歩と思っている
 &lt;ul&gt;
 &lt;li&gt;この辺がgolang難しい（クラスがない、ファイル分割をどの単位でやっていいのかなど）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;目的を見失わないこと&lt;/p&gt;
+&lt;li&gt;目的を見失わないこと
 &lt;ul&gt;
 &lt;li&gt;議論が停滞したりちょっと逸れてきたなというとき「どうすれば勝ちなんだっけ」と言うことにしてる&lt;/li&gt;
 &lt;/ul&gt;
@@ -1401,28 +1387,24 @@ intersection observable api モチベーション Intersection Observer API を�
 &lt;p&gt;的外れな感じになっていませんように…。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Jekyllのpostをvim scriptで作る]]></title><description><![CDATA[問題 Jekyllでpost用のファイルを作るのがめんどくさい。 ファイル名が  数字やハイフンなんて打ちにくいところにあるのに… お決まりのテンプレートを書かなくちゃいけない dateが特にめんどい こんなの 解決方法 vim pluginを探すと…]]></description><link>https://fourside.github.iovim-script-jekyll</link><guid isPermaLink="false">https://fourside.github.iovim-script-jekyll</guid><pubDate>Sun, 31 Dec 2017 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;問題&lt;/h3&gt;
 &lt;p&gt;Jekyllでpost用のファイルを作るのがめんどくさい。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;ファイル名が &lt;code class=&quot;language-text&quot;&gt;yyyy-mm-dd-{title}.md&lt;/code&gt;&lt;/p&gt;
+&lt;li&gt;ファイル名が &lt;code class=&quot;language-text&quot;&gt;yyyy-mm-dd-{title}.md&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;数字やハイフンなんて打ちにくいところにあるのに…&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;お決まりのテンプレートを書かなくちゃいけない&lt;/p&gt;
+&lt;li&gt;お決まりのテンプレートを書かなくちゃいけない
 &lt;ul&gt;
 &lt;li&gt;dateが特にめんどい&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;こんなの&lt;/p&gt;
+&lt;li&gt;こんなの&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
 layout: post
-title: &amp;quot;記事のタイトル&amp;quot;
+title: &quot;記事のタイトル&quot;
 date: 2018-01-01 00:00:00 +0900
 categories: vim
 ---&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h3&gt;解決方法&lt;/h3&gt;
 &lt;p&gt;vim pluginを探すと3つほどぱっと見つかるんだけど、欲しいものは簡単なものだし、自分でvim scriptを書いてみようと思った。&lt;/p&gt;
 &lt;h3&gt;欲しいもの&lt;/h3&gt;
@@ -1433,33 +1415,28 @@ categories: vim
 &lt;/ul&gt;
 &lt;h3&gt;参考にしたもの&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://thinca.hatenablog.com/entry/20100201/1265009821&quot;&gt;Vimスクリプト基礎文法最速マスター - 永遠に未完成&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;http://thinca.hatenablog.com/entry/20100201/1265009821&quot;&gt;Vimスクリプト基礎文法最速マスター - 永遠に未完成&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;数年前にもvim script書こうと思い立ったことがあって、ヘルプよりこっちを見てしまう&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://vim-jp.org/tips/start_vimscript.html&quot;&gt;vim-jp » Vim script事始め&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;http://vim-jp.org/tips/start_vimscript.html&quot;&gt;vim-jp » Vim script事始め&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;:h write-plugin&lt;/code&gt; が丁寧でvimはドキュメントしっかりしてるな～と思った&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;q-args&lt;/code&gt; というのを初めて知った。 &lt;code class=&quot;language-text&quot;&gt;args&lt;/code&gt; だとコマンドの引数を文字列として扱ってくれないので不便だなあと悩んでいた。&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;プラグインの2重ロードを防ぐイディオム、開発のとき邪魔だからコメントアウトしてたんだけど、うっかりコミットしそう&lt;/p&gt;
+&lt;li&gt;プラグインの2重ロードを防ぐイディオム、開発のとき邪魔だからコメントアウトしてたんだけど、うっかりコミットしそう
 &lt;ul&gt;
 &lt;li&gt;何回でもロードしていいように書くのが正解なのかな&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.kaoriya.net/blog/2012/02/19/&quot;&gt;Vimスクリプトを書いてみよう — KaoriYa&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaoriya.net/blog/2012/02/19/&quot;&gt;Vimスクリプトを書いてみよう — KaoriYa&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;わかりやすい&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;自分のvimrc&lt;/p&gt;
+&lt;li&gt;自分のvimrc
 &lt;ul&gt;
 &lt;li&gt;普段のメモを取るように、日付をファイル名にしたバッファを開くコマンドを作っていたのだった&lt;/li&gt;
 &lt;li&gt;それもどこからかコピーして持ってきたやつだったはず…&lt;/li&gt;
@@ -1469,209 +1446,235 @@ categories: vim
 &lt;h3&gt;できたもの&lt;/h3&gt;
 &lt;p&gt;長いので折りたたみたい…&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist84922419&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-jekyll-post-vim&quot; class=&quot;file my-2&quot;&gt;
     
-
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-vim-script  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt; Vim global plugin for creating jekyll&amp;#39;s post&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt; Last Change:&lt;/span&gt;  2018 Jun 01&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt; Maintainer:&lt;/span&gt;   fourside &amp;lt;fourside@gmail.com&amp;gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt; License:&lt;/span&gt;      This file is placed in the public domain.&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;div class=&quot;js-check-bidi js-blob-code-container blob-code-content&quot;&gt;
+
+  &lt;template class=&quot;js-file-alert-template&quot;&gt;
+  &lt;div data-view-component=&quot;true&quot; class=&quot;flash flash-warn flash-full d-flex flex-items-center&quot;&gt;
+  &lt;svg aria-hidden=&quot;true&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; data-view-component=&quot;true&quot; class=&quot;octicon octicon-alert&quot;&gt;
+    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+  
+    &lt;span&gt;
+      This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
+      &lt;a href=&quot;https://github.co/hiddenchars&quot; target=&quot;_blank&quot;&gt;Learn more about bidirectional Unicode characters&lt;/a&gt;
+    &lt;/span&gt;
+
+
+  &lt;div data-view-component=&quot;true&quot; class=&quot;flash-action&quot;&gt;        &lt;a href=&quot;{{ revealButtonHref }}&quot; data-view-component=&quot;true&quot; class=&quot;btn-sm btn&quot;&gt;  Show hidden characters
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/template&gt;
+&lt;template class=&quot;js-line-alert-template&quot;&gt;
+  &lt;span aria-label=&quot;This line has hidden Unicode characters&quot; data-view-component=&quot;true&quot; class=&quot;line-alert tooltipped tooltipped-e&quot;&gt;
+    &lt;svg aria-hidden=&quot;true&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; data-view-component=&quot;true&quot; class=&quot;octicon octicon-alert&quot;&gt;
+    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;/template&gt;
+
+  &lt;table class=&quot;highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip data-tagsearch-lang=&quot;Vim Script&quot; data-tagsearch-path=&quot;jekyll-post.vim&quot;&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L1&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt; Vim global plugin for creating jekyll&amp;#39;s post&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L2&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt; Last Change:&lt;/span&gt;  2018 Jun 01&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L3&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt; Maintainer:&lt;/span&gt;   fourside &amp;lt;fourside@gmail.com&amp;gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L4&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt; License:&lt;/span&gt;      This file is placed in the public domain.&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L5&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;exists&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;g:loaded_jekyll_post&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-c1&quot;&gt;finish&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;g:&lt;/span&gt;loaded_jekyll_post&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L6&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;exists&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;g:loaded_jekyll_post&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L7&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;finish&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L8&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L9&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;g:&lt;/span&gt;loaded_jekyll_post&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L10&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;save_cpo&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &amp;amp;&lt;span class=&quot;pl-c1&quot;&gt;cpo&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;cpo&lt;/span&gt;&amp;amp;&lt;span class=&quot;pl-c1&quot;&gt;vim&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L11&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;save_cpo&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &amp;amp;&lt;span class=&quot;pl-c1&quot;&gt;cpo&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L12&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;cpo&lt;/span&gt;&amp;amp;&lt;span class=&quot;pl-c1&quot;&gt;vim&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L13&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;zone_offset&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;strftime&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;%z&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;has&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;win32&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;zone_offset&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;+0900&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L14&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;zone_offset&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;strftime&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;%z&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L15&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;has&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;win32&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L16&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;zone_offset&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;+0900&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L17&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L18&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;template&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; [&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;---&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;layout: post&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;title: &lt;span class=&quot;pl-cce&quot;&gt;\&amp;quot;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;date: &lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; . &lt;span class=&quot;pl-en&quot;&gt;strftime&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;%Y-%m-%d %H:%M:%S &lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;) . &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;zone_offset&lt;/span&gt;,&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;categories: &lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;---&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\]&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L19&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;template&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; [&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L20&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;---&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L21&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;layout: post&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L22&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;title: &lt;span class=&quot;pl-cce&quot;&gt;\&amp;quot;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L23&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;date: &lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; . &lt;span class=&quot;pl-en&quot;&gt;strftime&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;%Y-%m-%d %H:%M:%S &lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;) . &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;zone_offset&lt;/span&gt;,&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L24&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;categories: &lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L25&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;---&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L26&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-cce&quot;&gt;\]&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L27&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;JekyllPost&lt;/span&gt;(&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;    &lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt; variable-length args ignores a delimiter when joining&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;join&lt;/span&gt;(&lt;span class=&quot;pl-en&quot;&gt;split&lt;/span&gt;(&lt;span class=&quot;pl-en&quot;&gt;join&lt;/span&gt;(&lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;a:&lt;/span&gt;000&lt;/span&gt;), &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;), &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;-&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L31&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; filename &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;strftime&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;%Y-%m-%d-&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;) . &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;l:&lt;/span&gt;title&lt;/span&gt; . &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;.md&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L32&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;:edit &lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt; .  filename&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L33&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;33&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC33&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;getfsize&lt;/span&gt;(filename)&lt;span class=&quot;pl-k&quot;&gt; &amp;gt; &lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L34&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;34&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC34&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L35&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;35&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC35&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L36&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;36&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC36&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;append&lt;/span&gt;(&lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;template&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L37&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;37&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC37&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endfunction&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L38&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;38&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC38&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L28&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;JekyllPost&lt;/span&gt;(&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L29&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;    &lt;span class=&quot;pl-c&quot;&gt;&amp;quot;&lt;/span&gt; variable-length args ignores a delimiter when joining&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L30&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;join&lt;/span&gt;(&lt;span class=&quot;pl-en&quot;&gt;split&lt;/span&gt;(&lt;span class=&quot;pl-en&quot;&gt;join&lt;/span&gt;(&lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;a:&lt;/span&gt;000&lt;/span&gt;), &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;), &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;-&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L31&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; filename &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;strftime&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;%Y-%m-%d-&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;) . &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;l:&lt;/span&gt;title&lt;/span&gt; . &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;.md&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L32&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;:edit &lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt; .  filename&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L33&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;33&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC33&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;getfsize&lt;/span&gt;(filename)&lt;span class=&quot;pl-k&quot;&gt; &amp;gt; &lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L34&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;34&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC34&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L35&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;35&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC35&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L36&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;36&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC36&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;append&lt;/span&gt;(&lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;template&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L37&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;37&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC37&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endfunction&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L38&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;38&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC38&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L39&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;39&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC39&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;exists&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;:JekyllPost&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L40&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;40&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC40&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-c1&quot;&gt;command&lt;/span&gt; -&lt;span class=&quot;pl-en&quot;&gt;nargs&lt;/span&gt;=&lt;span class=&quot;pl-c1&quot;&gt;1&lt;/span&gt;  JekyllPost  :&lt;span class=&quot;pl-c1&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;JekyllPost&lt;/span&gt;(&lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;q-args&amp;gt;&lt;/span&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L41&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;41&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC41&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L42&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;42&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC42&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L39&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;39&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC39&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;exists&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;:JekyllPost&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L40&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;40&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC40&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-c1&quot;&gt;command&lt;/span&gt; -&lt;span class=&quot;pl-en&quot;&gt;nargs&lt;/span&gt;=&lt;span class=&quot;pl-c1&quot;&gt;1&lt;/span&gt;  JekyllPost  :&lt;span class=&quot;pl-c1&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;JekyllPost&lt;/span&gt;(&lt;span class=&quot;pl-e&quot;&gt;&amp;lt;q-args&amp;gt;&lt;/span&gt;)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L41&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;41&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC41&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;endif&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L42&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;42&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC42&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L43&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;43&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC43&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L43&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;43&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC43&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L44&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;44&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC44&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &amp;amp;&lt;span class=&quot;pl-c1&quot;&gt;cpo&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;save_cpo&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L45&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;45&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC45&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;unlet&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;save_cpo&lt;/span&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-L46&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;46&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-jekyll-post-vim-LC46&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L44&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;44&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC44&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &amp;amp;&lt;span class=&quot;pl-c1&quot;&gt;cpo&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;save_cpo&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L45&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;45&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC45&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;unlet&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;s:&lt;/span&gt;save_cpo&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-L46&quot; class=&quot;blob-num js-line-number js-code-nav-line-number&quot; data-line-number=&quot;46&quot;&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-jekyll-post-vim-LC46&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
 &lt;/td&gt;
-      &lt;/tr&gt;
-&lt;/table&gt;
+        &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
 
 
   &lt;/div&gt;
@@ -1682,23 +1685,23 @@ categories: vim
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/fourside/d09cbf3a755e292e977e31e592a7ee09/raw/ab7f98dbb546bab8a41af93f4dc705f8351e493a/jekyll-post.vim&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/fourside/d09cbf3a755e292e977e31e592a7ee09#file-jekyll-post-vim&quot;&gt;jekyll-post.vim&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/fourside/d09cbf3a755e292e977e31e592a7ee09#file-jekyll-post-vim&quot;&gt;
+          jekyll-post.vim
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;&lt;/p&gt;
 &lt;h3&gt;はまったところ&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;可変長引数をjoinすると、デリミタが無視されてスペースで連結されてしまう&lt;/p&gt;
+&lt;li&gt;可変長引数をjoinすると、デリミタが無視されてスペースで連結されてしまう
 &lt;ul&gt;
 &lt;li&gt;仕方なく、joinしてsplitしてjoinした…&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;strftime(‘%z’)から &lt;code class=&quot;language-text&quot;&gt;+0900&lt;/code&gt; みたいなタイムゾーンのオフセットを得たいのだけど、Windowsだと &lt;code class=&quot;language-text&quot;&gt;東京（標準時）&lt;/code&gt; が返ってきてしまう。&lt;/p&gt;
+&lt;li&gt;strftime(&apos;%z&apos;)から &lt;code class=&quot;language-text&quot;&gt;+0900&lt;/code&gt; みたいなタイムゾーンのオフセットを得たいのだけど、Windowsだと &lt;code class=&quot;language-text&quot;&gt;東京（標準時）&lt;/code&gt; が返ってきてしまう。
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/vim/vim/issues/860&quot;&gt;strftime(“%z”) not working correctly · Issue #860 · vim/vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/vim/vim/issues/860&quot;&gt;strftime(&quot;%z&quot;) not working correctly · Issue #860 · vim/vim&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;仕方ないっぽいので、Windowsでは &lt;code class=&quot;language-text&quot;&gt;+0900&lt;/code&gt; 固定にした。自分用だし。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -1743,7 +1746,7 @@ rtmpdump: error while loading shared libraries: librtmp.so.1: cannot open shared
 &lt;p&gt;soが読めてないっぽい。ビルドしたsoは&lt;code class=&quot;language-text&quot;&gt;/usr/local/lib&lt;/code&gt;にインストールされてる。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# cat /etc/ld.so.conf
 include ld.so.conf.d/.conf
-# echo /usr/local/lib &amp;gt; /etc/ld.so.conf.d/rtmpdump.conf
+# echo /usr/local/lib &gt; /etc/ld.so.conf.d/rtmpdump.conf
 # ldconfig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;cf. &lt;a href=&quot;https://blogs.yahoo.co.jp/mrsd_tangerine/40359620.html&quot;&gt;https://blogs.yahoo.co.jp/mrsd_tangerine/40359620.html&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;swftools&lt;/h3&gt;
