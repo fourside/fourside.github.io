@@ -60,16 +60,22 @@ module.exports = {
           {
             serialize: ({ query: { site, contentful } }) => {
               return contentful.edges.map((edge) => {
-                return Object.assign({}, {
-                  title: edge.node.title,
-                  description: edge.node.body.childMarkdownRemark.excerpt,
-                  date: edge.node.publishDate,
-                  url: site.siteMetadata.siteUrl + edge.node.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.slug,
-                  custom_elements: [{
-                    "content:encoded": edge.node.body.childMarkdownRemark.html,
-                  }],
-                });
+                return Object.assign(
+                  {},
+                  {
+                    title: edge.node.title,
+                    description: edge.node.body.childMarkdownRemark.excerpt,
+                    date: edge.node.publishDate,
+                    url: site.siteMetadata.siteUrl + edge.node.slug,
+                    guid: site.siteMetadata.siteUrl + edge.node.slug,
+                    custom_elements: [
+                      {
+                        "content:encoded":
+                          edge.node.body.childMarkdownRemark.html,
+                      },
+                    ],
+                  },
+                );
               });
             },
             query:
@@ -122,9 +128,7 @@ module.exports = {
     {
       resolve: `gatsby-source-gravatar`,
       options: {
-        emails: [
-          { email: `fourside@gmail.com`, query: `?size=64` },
-        ],
+        emails: [{ email: `fourside@gmail.com`, query: `?size=64` }],
       },
     },
     `gatsby-plugin-offline`,

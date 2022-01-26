@@ -1,7 +1,7 @@
-import React, { VFC } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { VFC } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from "../utils/typography";
 
 const Bio: VFC = () => {
   const data = useStaticQuery(graphql`
@@ -17,9 +17,9 @@ const Bio: VFC = () => {
         }
       }
     }
-  `)
+  `);
 
-  const { author } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata;
   return (
     <div
       style={{
@@ -46,7 +46,7 @@ const Bio: VFC = () => {
         Written by <strong>{author.name}</strong>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;

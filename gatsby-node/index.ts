@@ -22,19 +22,16 @@ export type BlogPageContext = {
   slug: string;
   next: Node | null;
   previous: Node | null;
-}
+};
 
 export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
   const result = await graphql<Result>(
     `
       {
-        contentful: allContentfulBlogPost(
-          sort: { fields: publishDate, order: DESC }
-          limit: 1000
-        ) {
+        contentful: allContentfulBlogPost(sort: { fields: publishDate, order: DESC }, limit: 1000) {
           edges {
             node {
               body {
@@ -48,10 +45,10 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions 
         }
       }
     `
-  )
+  );
 
   if (result.errors) {
-    throw result.errors
+    throw result.errors;
   }
 
   if (result.data === undefined) {
@@ -73,6 +70,6 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions 
         previous,
         next,
       },
-    })
-  })
-}
+    });
+  });
+};

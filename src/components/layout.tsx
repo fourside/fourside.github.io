@@ -1,7 +1,7 @@
-import React, { FC } from "react"
-import { Link } from "gatsby"
+import React, { FC } from "react";
+import { Link } from "gatsby";
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from "../utils/typography";
 
 interface Props {
   location: Location;
@@ -9,9 +9,8 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ location, title, children }) => {
-  // const rootPath = `${__PATH_PREFIX__}/`
-  const rootPath = "/";
-  let header
+  const rootPath = `${__PATH_PREFIX__}/`;
+  let header;
 
   if (location.pathname === rootPath) {
     header = (
@@ -32,7 +31,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
           {title}
         </Link>
       </h1>
-    )
+    );
   } else {
     header = (
       <h3
@@ -51,7 +50,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
           {title}
         </Link>
       </h3>
-    )
+    );
   }
   return (
     <div
@@ -73,7 +72,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
         <a href="https://www.gatsbyjs.org">Gatsby</a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

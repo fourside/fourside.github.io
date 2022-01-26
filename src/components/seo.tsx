@@ -1,6 +1,6 @@
 import React, { VFC } from "react";
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
 type MetaProps = JSX.IntrinsicElements["meta"];
 
@@ -11,7 +11,7 @@ interface Props {
   title?: string;
 }
 
-const Seo: VFC<Props> = ({ description = "", lang = 'en', meta, title = "" }) => {
+const Seo: VFC<Props> = ({ description = "", lang = "en", meta, title = "" }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -23,9 +23,9 @@ const Seo: VFC<Props> = ({ description = "", lang = 'en', meta, title = "" }) =>
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
   const metaList: MetaProps[] = [
     {
       name: `description`,
@@ -69,7 +69,7 @@ const Seo: VFC<Props> = ({ description = "", lang = 'en', meta, title = "" }) =>
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={metaList}
     />
-  )
-}
+  );
+};
 
-export default Seo
+export default Seo;

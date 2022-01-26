@@ -1,12 +1,12 @@
-import React, { VFC } from "react"
-import { Link, graphql } from "gatsby"
-import type { PageProps } from "gatsby"
+import React, { VFC } from "react";
+import { Link, graphql } from "gatsby";
+import type { PageProps } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
-import { BlogPageContext } from "../../gatsby-node"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import { rhythm, scale } from "../utils/typography";
+import { BlogPageContext } from "../../gatsby-node";
 
 interface Props {
   contentfulBlogPost: {
@@ -28,15 +28,12 @@ interface Props {
 
 const BlogPostTemplate: VFC<PageProps<Props, BlogPageContext>> = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost;
-  const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+  const siteTitle = data.site.siteMetadata.title;
+  const { previous, next } = pageContext;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        title={post.title}
-        description={post.body.childMarkdownRemark.excerpt}
-      />
+      <Seo title={post.title} description={post.body.childMarkdownRemark.excerpt} />
       <article>
         <header>
           <h1
@@ -95,10 +92,10 @@ const BlogPostTemplate: VFC<PageProps<Props, BlogPageContext>> = ({ data, pageCo
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -118,4 +115,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
