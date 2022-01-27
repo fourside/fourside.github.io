@@ -12,9 +12,9 @@ interface Props {
 }
 
 const Seo: VFC<Props> = ({ description = "", lang = "en", meta, title = "" }) => {
-  const { site } = useStaticQuery(
+  const { site } = useStaticQuery<GatsbyTypes.SeoQuery>(
     graphql`
-      query {
+      query Seo {
         site {
           siteMetadata {
             title

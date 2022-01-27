@@ -30,7 +30,7 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions 
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
   const result = await graphql<Result>(
     `
-      {
+      query BlogPost {
         contentful: allContentfulBlogPost(sort: { fields: publishDate, order: DESC }, limit: 1000) {
           edges {
             node {

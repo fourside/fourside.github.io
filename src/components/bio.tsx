@@ -4,8 +4,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import { rhythm } from "../utils/typography";
 
 const Bio: VFC = () => {
-  const data = useStaticQuery(graphql`
-    query BioQuery {
+  const data = useStaticQuery<GatsbyTypes.BioQuery>(graphql`
+    query Bio {
       gravatar {
         url
       }
@@ -18,8 +18,15 @@ const Bio: VFC = () => {
       }
     }
   `);
+  if (data.site?.siteMetadata === undefined) {
+    return <div>Error: site.siteMetadata is undefined</div>;
+  }
+  if (data.gravatar?.url === undefined) {
+    return <div>Error: gravatar.url is undefined</div>;
+  }
 
-  const { author } = data.site.siteMetadata;
+  const authorName = data.site.siteMetadata.author?.name || "";
+
   return (
     <div
       style={{
@@ -30,7 +37,7 @@ const Bio: VFC = () => {
     >
       <img
         src={data.gravatar.url}
-        alt={author.name}
+        alt={authorName}
         style={{
           marginRight: rhythm(1 / 2),
           marginBottom: 0,
@@ -43,7 +50,7 @@ const Bio: VFC = () => {
           margin: `0`,
         }}
       >
-        Written by <strong>{author.name}</strong>
+        Written by <strong>{authorName}</strong>
       </p>
     </div>
   );
