@@ -10,6 +10,7 @@ module.exports = {
     siteUrl: `https://fourside.github.io/`,
   },
   plugins: [
+    "gatsby-plugin-typegen",
     "gatsby-plugin-image",
     {
       resolve: `gatsby-transformer-remark`,

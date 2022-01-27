@@ -73,7 +73,7 @@ const BlogIndex: VFC<PageProps<Props>> = ({ data, location }) => {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query {
+  query IndexPage {
     site {
       siteMetadata {
         title
