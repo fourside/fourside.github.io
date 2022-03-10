@@ -1,4 +1,220 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 14 Feb 2022 13:57:41 GMT</lastBuildDate><item><title><![CDATA[Server Side Renderingしてみました]]></title><description><![CDATA[やりたいこと 現在運用しているサーバがsinatra + hamlで構成されており、バージョンアップに追従できておらず、普段からrubyを触らなくなってしまったのもあり、機能追加も億劫になっていました。そこでどうせなら Node.js…]]></description><link>https://fourside.github.iosimple_server_side_rendering</link><guid isPermaLink="false">https://fourside.github.iosimple_server_side_rendering</guid><pubDate>Mon, 14 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;やりたいこと&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 10 Mar 2022 13:41:43 GMT</lastBuildDate><item><title><![CDATA[Spotifyのプレイリストエディタを作りました]]></title><description><![CDATA[Spotifyのプレイリストエディタを作りました 何を作ったか Spotifyのプレイリスト編集アプリです。 SpotifyのDiscover weeklyを聞きつつ（Spotifyがrecommend…]]></description><link>https://fourside.github.iospotify_playlist_editor</link><guid isPermaLink="false">https://fourside.github.iospotify_playlist_editor</guid><pubDate>Thu, 10 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Spotifyのプレイリストエディタを作りました&lt;/h1&gt;
+&lt;h2&gt;何を作ったか&lt;/h2&gt;
+&lt;p&gt;Spotifyのプレイリスト編集アプリです。&lt;/p&gt;
+&lt;p&gt;SpotifyのDiscover weeklyを聞きつつ（Spotifyがrecommendしてくれる週替りのプレイリストです）、気になった曲をお気に入りに追加して聞き直すという楽しみ方を2年間くらい続けているのですが、それが現在600曲以上になり、特別困ってはいないものの、何らかの基準で別なプレイリストに逃したいな…と思って作りました。&lt;/p&gt;
+&lt;!-- gif --&gt;
+&lt;p&gt;で、こういうときは使ってみたいライブラリを触っていくのも楽しみのひとつで、それぞれ使ってみた感想を書き残します。&lt;/p&gt;
+&lt;h2&gt;使ってみたライブラリ&lt;/h2&gt;
+&lt;p&gt;ベースはNext.jsです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NextAuth.js&lt;/li&gt;
+&lt;li&gt;vanilla-extract&lt;/li&gt;
+&lt;li&gt;React DnD&lt;/li&gt;
+&lt;li&gt;SWR&lt;/li&gt;
+&lt;li&gt;Radix UI&lt;/li&gt;
+&lt;li&gt;Storybook&lt;/li&gt;
+&lt;li&gt;React Testing Library&lt;/li&gt;
+&lt;li&gt;msw&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;NextAuth.js&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://next-auth.js.org/&quot;&gt;NextAuth.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;特定プロバイダのOAuth処理をNext.jsに簡単に導入してくれるやつ
+&lt;ul&gt;
+&lt;li&gt;プロバイダの数が充実していて、Spotifyもサポートされていた
+&lt;ul&gt;
+&lt;li&gt;正直、プロバイダがひとつくらいなら自前実装でもよいかも&lt;/li&gt;
+&lt;li&gt;複数サポートしたいときにメリットを感じられる気がします&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(vercelにjoinしてる方が作ってるので安心感はある)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;戸惑ったところ
+&lt;ul&gt;
+&lt;li&gt;どうやってスコープを渡すのか
+&lt;ul&gt;
+&lt;li&gt;ProviderにクライアントIDなど渡す関数にAuthorization URLを生成するところがあり、そこにパラメータとして渡せる
+&lt;ul&gt;
+&lt;li&gt;今となってはドキュメントから参照されてるコードをちゃんと読めば分かったかも&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Spotify APIが要求するAccessTokenはどう取れるのか
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://next-auth.js.org/getting-started/example#extensibility&quot;&gt;Getting Started | NextAuth.js&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;access tokenは、jwtコールバックに渡されるaccountオブジェクトに、認証完了後にだけ入ってるので、それをtokenオブジェクトに詰め、それが次のsessionコールバックに渡されるのでそこでも詰め直しをする、というたらい回しをした&lt;/li&gt;
+&lt;li&gt;このまどろっこしさ、これで正しいの？ という疑念はある…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;vanilla-extract&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://vanilla-extract.style/&quot;&gt;vanilla-extract&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ゼロランタイムのCSSライブラリで、&lt;a href=&quot;https://2021.stateofcss.com/en-US/technologies/css-in-js&quot;&gt;The State of CSS 2021&lt;/a&gt; で名前を見かけて試しに使ってみようかという感じ&lt;/li&gt;
+&lt;li&gt;CSS ModuleのTypeScript版という感じ
+&lt;ul&gt;
+&lt;li&gt;className単位でexportすることになるので、エディタの補完候補がはちゃめちゃに多くなるのが気にならなければ…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;jest実行時には多分設定が必要で、特に何もしなければCSSは生成されない
+&lt;ul&gt;
+&lt;li&gt;この &lt;a href=&quot;https://vanilla-extract.style/documentation/styling-api/#stylevariants&quot;&gt;styleVariants&lt;/a&gt; がjest実行時にundefinedになってしまい、テストケース内でrenderさせるとエラーが起きてしまう&lt;/li&gt;
+&lt;li&gt;結局、回避する手段が分からず、styleVariantsをやめてしまった :cry:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;スタイルの合成は、通常使う &lt;code class=&quot;language-text&quot;&gt;style&lt;/code&gt; 関数でできる
+&lt;ul&gt;
+&lt;li&gt;CSSのオブジェクトも受け取れるし、その配列も受け取れるようになっている。便利。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(改めてオフィシャルサイト見てみたら、ジョンレシグ先生のtweetが紹介されてる)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;React DnD&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://react-dnd.github.io/react-dnd/about&quot;&gt;React DnD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ReactでDrag and Dropを簡単に扱えるやつ&lt;/li&gt;
+&lt;li&gt;職場で触る機会があったし、シンプルに使えるので、これを採用した
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/atlassian/react-beautiful-dnd&quot;&gt;react-beautiful-dnd&lt;/a&gt; もデモがきれいだったしAtlassianが作ってるのかーと好印象だったんだけど、開発を止めてるそうなので見送った&lt;/li&gt;
+&lt;li&gt;Dragが終わったイベント検知を、Dragが発生した側でハンドルできるのがよい
+&lt;ul&gt;
+&lt;li&gt;Dropイベント側で曲の追加をして、Dragイベント側で曲の削除をする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;SWR&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://swr.vercel.app/ja&quot;&gt;データ取得のための React Hooks ライブラリ – SWR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;fetchのresponseをReactのstateとして扱うやつ&lt;/li&gt;
+&lt;li&gt;便利なんだけど、以下ちょっとだけ不満点がふたつ&lt;/li&gt;
+&lt;li&gt;useSWRに与える第2引数のfetcherが、第1引数のkeyを受け取ることになっていて不便
+&lt;ul&gt;
+&lt;li&gt;キーがそのままリクエスト先のURLパスなら便利なんだけど、fetcherの中でzodでJSONのスキーマチェックなど、URLパス毎に個別の処理を入れたいので、URLパスを受け取れる共通化されたfetcherは作りにくい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; error &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useSWRImmutable&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;playlists/&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;playlistId&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getPlaylistTracks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;playlistId&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;useSWRがloadingを返してくれなくて不便
+&lt;ul&gt;
+&lt;li&gt;オフィシャルドキュメントでは、errorとdata(レスポンス)がundefinedなら読み取り中という扱いにしている&lt;/li&gt;
+&lt;li&gt;ページングをするとき、&lt;code class=&quot;language-text&quot;&gt;useSWR&lt;/code&gt; ではなく &lt;code class=&quot;language-text&quot;&gt;useSWRInfinite&lt;/code&gt; というAPIを使うんだけど、その場合 loading をどう表現したらいいのか？という迷いがあり、結果こうなった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; error&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; setSize &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useSWRInfinite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;getKey&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; fetcher&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; loadingNext &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; size &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; data &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;size &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;「sizeは増えてるけど、data[size]番目のデータはまだ取得されていない」すなわち次ページのloading中ということ&lt;/li&gt;
+&lt;li&gt;swrで持つ状態が増えるとそこでひとつ最適化をしないといけないはずだから、なるべくシンプルに保つためにloadingを持たない選択をしているのかなという理解をした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Radix UI&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.radix-ui.com/docs/primitives/overview/introduction&quot;&gt;Radix UI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;まだメジャーバージョンが0なheadless componentライブラリ
+&lt;ul&gt;
+&lt;li&gt;focus管理とかキーボード操作とか、見た目以外のアクセシビリティを提供してくれるやつ&lt;/li&gt;
+&lt;li&gt;GitHub Trendingでもよく見かける&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Dialog(いわゆるモーダル)などを触ってみたけど、ちょいクセを感じた
+&lt;ul&gt;
+&lt;li&gt;Triggerというコンポーネント（こいつはDialogを開閉するボタン）を含めないと、ESCキーでDialogを閉じれなかったりする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Scroll AreaのスクロールバーがDOMで実装されていてこれが欲しかったんだけど、heightが固定じゃないとスクロールバーが出てくれなくて悲しかった（何故かは追ってない）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Storybook&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://storybook.js.org/&quot;&gt;Storybook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;厳密には仕事で少し触ったことはあるけど、きちんと使いこなせてはいなかった&lt;/li&gt;
+&lt;li&gt;なにより連れてくるnpmモジュールの多さにちょっと引き気味だったのと、連れてくるやつのせいでnpm auditが消えないがちなので、ちょっと及び腰だった&lt;/li&gt;
+&lt;li&gt;使ってみるとシンプルな記述で、カタログ的にコンポーネントの見た目が確認できるのはすごくうれしい&lt;/li&gt;
+&lt;li&gt;コンポーネントの機能だけ先に作ってから、storybookを用意して、コンポーネントが持つパターン毎にスタイルを当てる、という流れで作業できた
+&lt;ul&gt;
+&lt;li&gt;ローディングとかエラー状態とか動作確認しにくいコンポーネントが確認できるのはうれしい&lt;/li&gt;
+&lt;li&gt;(余談ですが、仕事では一部 &lt;a href=&quot;https://reactcosmos.org/&quot;&gt;React Cosmos&lt;/a&gt; という軽量なやつを使っていて、これはこれでシンプルでよいです)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Storybookが用意しているドキュメントがしっかりしていて分かりやすいというのもよい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;React Testing Library&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://testing-library.com/docs/react-testing-library/intro/&quot;&gt;React Testing Library | Testing Library&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Reactのコンポーネント自体をテストしたことがあまりなく、これも及び腰だったので試してみたけど、これもよかった
+&lt;ul&gt;
+&lt;li&gt;Reactの内部ではなく、実際にユーザーが体験することに対して関心があるテストが書けるようになっている&lt;/li&gt;
+&lt;li&gt;enzymeの置き換えになるというのがセールスポイントとしていたんだけど、かなり昔にちょろっと触った程度なので面倒臭さは忘れてしまった…
+&lt;ul&gt;
+&lt;li&gt;確かにセットアップは簡単だった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;表示のテストはStorybookでやる（手作業になるけど）一方で動作の確認はReact Testing Libraryでカバーという棲み分けも分かりやすくてよい&lt;/li&gt;
+&lt;li&gt;単項目のシンプルなフォームに対して書いたテストケースは20個くらい書いた
+&lt;ul&gt;
+&lt;li&gt;なるべくアサーションルーレットにならないように気をつけた結果の数なんだけど、思ったより少ないか&lt;/li&gt;
+&lt;li&gt;必須項目のエラーをいつ出すかとか、ラベルをクリックしてフォーカスが移るかとか、enterでもボタンクリックでもsubmitできるかとか、挙動をテストしたい項目はそれなりにあって、これがテストで書けるのはかなり安心感を得られてよい
+&lt;ul&gt;
+&lt;li&gt;実際テストが通らず、バグが直せたのも体験よかった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;MSW&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://mswjs.io/&quot;&gt;MSW&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;http通信をinterruptしてモックデータを返すやつ&lt;/li&gt;
+&lt;li&gt;このアプリがほぼ出来上がってから使い始めたので、全エンドポイントにモックデータを用意するのがダルくて、ちゃんとやれてない
+&lt;ul&gt;
+&lt;li&gt;mswで定義してないエンドポイントに対してリクエストがあったとき、サーバコンソールにログが出てしまったり、socketが中途半端な状態になるのかエラーになったりしがちだった&lt;/li&gt;
+&lt;li&gt;Intersection ObserverでInfinite loadingを実装するとき、リクエストが多数発生してSpotifyから429が返ってきてしまったことがあり、そのときモックデータが役に立ちました&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Storybookやユニットテストで使えたら便利そう(まだ使えていない)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;その他やったこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ディレクトリの切り方は &lt;a href=&quot;https://zenn.dev/yoshiko/articles/99f8047555f700&quot;&gt;SPA Componentの推しディレクトリ構成について語る&lt;/a&gt; を参考にしました&lt;/li&gt;
+&lt;li&gt;主に、components以下を model と ui に分けるやり方
+&lt;ul&gt;
+&lt;li&gt;最初は model と ui に分けなくても十分秩序あるように感じれたのだけど、Radix UI を使い始めてから ui のあり方だけに関心を持つコンポーネントが生まれ始め、分けるタイミングを感じた&lt;/li&gt;
+&lt;li&gt;そしてtestやstorybook、cssも別ファイルで分かれるので、コンポーネントにべったりなhooksも外に出したりした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;やらなかったこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;hooksのテスト
+&lt;ul&gt;
+&lt;li&gt;それ用のライブラリである &lt;a href=&quot;https://react-hooks-testing-library.com/&quot;&gt;React Hooks Testing Library&lt;/a&gt; を見つけて、よしと思ったんだけど、&lt;code class=&quot;language-text&quot;&gt;Your hook is defined alongside a component and is only used there&lt;/code&gt; とあり、コンポーネント本体のテストでカバーすべきかと思い直したので&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;難しかったこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;lighthouseを実行し、html形式のレポートをgh-pagesにデプロイする
+&lt;ul&gt;
+&lt;li&gt;Spotifyの認証画面から先がpuppeteerが不安定、だいたいいつもタイムオーバーになる&lt;/li&gt;
+&lt;li&gt;そのせいでログイン試行がかさみ、Spotifyから疑わしい行動があったとしてパスワードリセットされてしまった&lt;/li&gt;
+&lt;li&gt;無事htmlがデプロイされたとしても、githubのリポジトリが検出するlanguageがhtmlになってしまって若干悲しい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;またlighthouseは型定義をきちんとした形で提供してくれておらず、definitely typedも存在しないので、どうにか誤魔化すしかなく、そこも面倒くさいポイントではあった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;終わりに&lt;/h1&gt;
+&lt;p&gt;以上です(これも余談ですが、一旦人に見せると満足してしまって開発意欲が減ってしまいますね、見せないで悶々と作って行くほうがいいのか？)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Server Side Renderingしてみました]]></title><description><![CDATA[やりたいこと 現在運用しているサーバがsinatra + hamlで構成されており、バージョンアップに追従できておらず、普段からrubyを触らなくなってしまったのもあり、機能追加も億劫になっていました。そこでどうせなら Node.js…]]></description><link>https://fourside.github.iosimple_server_side_rendering</link><guid isPermaLink="false">https://fourside.github.iosimple_server_side_rendering</guid><pubDate>Mon, 14 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;やりたいこと&lt;/h2&gt;
 &lt;p&gt;現在運用しているサーバがsinatra + hamlで構成されており、バージョンアップに追従できておらず、普段からrubyを触らなくなってしまったのもあり、機能追加も億劫になっていました。そこでどうせなら&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Node.jsでサーバサイドを書いてみて&lt;/li&gt;
