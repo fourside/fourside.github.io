@@ -24,8 +24,16 @@
 </ul>
 </li>
 <li>ただの好奇心から Next.js 12.1 から導入された <a href="https://nextjs.org/docs/testing#setting-up-jest-with-the-rust-compiler">next/jest</a> を使っていたので、いろいろ設定が追加されている</li>
-<li>transform にも予め設定があり、自分で用意した transform の設定がその後に追加されているようだった</li>
-<li>おそらく同一ファイルに transform は二重にかからず、自分の設定が無視されていて、結果 vanilla-extract の babel plugin が呼ばれない雰囲気が漂う</li>
+<li>transform にも予め設定があり、自分で用意した transform の設定がその後に追加されていた
+<ul>
+<li>それもそのはず、jest.config.js では最後に <code class="language-text">next/jest</code> から生成した関数で設定をwrapしてるのでそうなる</li>
+</ul>
+</li>
+<li>おそらく同一ファイルに transform は二重にかからず、自分の設定が無視されていて、結果 vanilla-extract の babel plugin が呼ばれない雰囲気が漂う
+<ul>
+<li>改めて調べると <a href="https://jestjs.io/ja/docs/next/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object">Jestの設定 - transform</a> に <code class="language-text">A transformer is only run once per file unless the file has changed. </code> とある</li>
+</ul>
+</li>
 <li>そこで試しに <code class="language-text">next/jest</code> をやめたら、あっさりスタイルは生成されるようになった</li>
 <li>さらに Next.js のドキュメントをよく読むと、 <a href="https://nextjs.org/docs/testing#setting-up-jest-with-babel">Setting up Jest (with Babel)</a> があり、<code class="language-text">next/jest</code> を使わないならマニュアルで設定を書けとある。ドキュメントをちゃんと読もう！</li>
 </ul>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 15 Mar 2022 00:19:46 GMT</lastBuildDate><item><title><![CDATA[Next.js 12.1 x jest x vanilla-extract でハマったこと]]></title><description><![CDATA[TL;DR Next.jsのドキュメントをちゃんと読んで設定を書くこと。 は swc でビルドできるプロジェクト向け 構成 Next.js 12.1 jest React Testing Library vanilla-extract 起きたこと vanilla-extract…]]></description><link>https://fourside.github.ionext12_jest_vanilla-extract</link><guid isPermaLink="false">https://fourside.github.ionext12_jest_vanilla-extract</guid><pubDate>Tue, 15 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;TL;DR&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 15 Mar 2022 01:32:16 GMT</lastBuildDate><item><title><![CDATA[Next.js 12.1 x jest x vanilla-extract でハマったこと]]></title><description><![CDATA[TL;DR Next.jsのドキュメントをちゃんと読んで設定を書くこと。 は swc でビルドできるプロジェクト向け 構成 Next.js 12.1 jest React Testing Library vanilla-extract 起きたこと vanilla-extract…]]></description><link>https://fourside.github.ionext12_jest_vanilla-extract</link><guid isPermaLink="false">https://fourside.github.ionext12_jest_vanilla-extract</guid><pubDate>Tue, 15 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;TL;DR&lt;/h2&gt;
 &lt;p&gt;Next.jsのドキュメントをちゃんと読んで設定を書くこと。&lt;code class=&quot;language-text&quot;&gt;next/jest&lt;/code&gt; は swc でビルドできるプロジェクト向け&lt;/p&gt;
 &lt;h2&gt;構成&lt;/h2&gt;
 &lt;ul&gt;
@@ -24,8 +24,16 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;ただの好奇心から Next.js 12.1 から導入された &lt;a href=&quot;https://nextjs.org/docs/testing#setting-up-jest-with-the-rust-compiler&quot;&gt;next/jest&lt;/a&gt; を使っていたので、いろいろ設定が追加されている&lt;/li&gt;
-&lt;li&gt;transform にも予め設定があり、自分で用意した transform の設定がその後に追加されているようだった&lt;/li&gt;
-&lt;li&gt;おそらく同一ファイルに transform は二重にかからず、自分の設定が無視されていて、結果 vanilla-extract の babel plugin が呼ばれない雰囲気が漂う&lt;/li&gt;
+&lt;li&gt;transform にも予め設定があり、自分で用意した transform の設定がその後に追加されていた
+&lt;ul&gt;
+&lt;li&gt;それもそのはず、jest.config.js では最後に &lt;code class=&quot;language-text&quot;&gt;next/jest&lt;/code&gt; から生成した関数で設定をwrapしてるのでそうなる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;おそらく同一ファイルに transform は二重にかからず、自分の設定が無視されていて、結果 vanilla-extract の babel plugin が呼ばれない雰囲気が漂う
+&lt;ul&gt;
+&lt;li&gt;改めて調べると &lt;a href=&quot;https://jestjs.io/ja/docs/next/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object&quot;&gt;Jestの設定 - transform&lt;/a&gt; に &lt;code class=&quot;language-text&quot;&gt;A transformer is only run once per file unless the file has changed. &lt;/code&gt; とある&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;そこで試しに &lt;code class=&quot;language-text&quot;&gt;next/jest&lt;/code&gt; をやめたら、あっさりスタイルは生成されるようになった&lt;/li&gt;
 &lt;li&gt;さらに Next.js のドキュメントをよく読むと、 &lt;a href=&quot;https://nextjs.org/docs/testing#setting-up-jest-with-babel&quot;&gt;Setting up Jest (with Babel)&lt;/a&gt; があり、&lt;code class=&quot;language-text&quot;&gt;next/jest&lt;/code&gt; を使わないならマニュアルで設定を書けとある。ドキュメントをちゃんと読もう！&lt;/li&gt;
 &lt;/ul&gt;
