@@ -37,7 +37,7 @@
 <h3>Eslint Plugin</h3>
 <p><a href="https://eslint.org/docs/developer-guide/working-with-plugins">Working with Plugins - ESLint</a> では Yeoman のテンプレートが内されていますが、npx一発では作れないので諦めました。がそれ以外は、plugin作成用のlint ruleの案内があったりしてよかったです。</p>
 <p>初手としては、<a href="https://github.com/Quramy/eslint-plugin-tutorial">Quramy/eslint-plugin-tutorial</a> というチュートリアルが分かりやすかったです。pluginが求めるインターフェイス、簡単なルールの書き方、そのテストのやり方、ASTについて分かりやすく案内されています。</p>
-<p>そして、作ってみて気づいたのが、import文の曖昧なパターンの存在です。<code class="language-text">import * from './hoge';</code> としたとき、二つの解釈が生まれます。</p>
+<p>そしてここから先はロジックの話ですが、作ってみて気づいたのが、import文の曖昧なパターンの存在です。<code class="language-text">import * from './hoge';</code> としたとき、二つの解釈が生まれます。</p>
 <ul>
 <li><code class="language-text">hoge</code> ディレクトリにある <code class="language-text">index.ts</code> からのインポート</li>
 <li><code class="language-text">hoge</code> ファイルで、何らかの拡張子が省略されている（<code class="language-text">hoge.ts</code> なのか、<code class="language-text">hoge.tsx</code> なのかは字句のみでは分からない）</li>
@@ -45,6 +45,14 @@
 <p>それらしい方法も思いつかないので、愚直にファイルシステムにアクセスして何が存在するのか確かめることにしています。それに伴って、テストでもbeforeAll/afterAllでディレクトリやファイルを作って後始末をしたくなるんですが、eslintのtest runnerにはそれがありません。そこで <a href="https://vitest.dev/">Vitest</a>でeslint test runnerを囲うことにしました。Vitestは依存ライブラリが少ないし簡単に実行できてよいですね。簡単なテストにはmochaを選びがちだったんですが、これからはVitestでよさそうです。</p>
 <h3>TypeScript Server Plugin</h3>
 <p>Eslintのpluginだけではエディタの補完候補までは制御できないので、Language Serverのレスポンスに介入できるTypeScript Server Pluginを作ってみました。コンパイラオプションの <code class="language-text">plugins</code> に指定します。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">"compilerOptions": {
+  "plugins": [
+    {
+      "name": "eslint-plugin-import-only-from-index",
+      "restrictedPath": "src/components"
+    }
+  ]
+}</code></pre></div>
 <p><a href="https://github.com/Microsoft/TypeScript/wiki/Writing-a-Language-Service-Plugin">Writing a Language Service Plugin · microsoft/TypeScript Wiki</a> が入門にちょうどよかったです。テストに関しては実際にプロジェクトを作って確かめろというスタンスで、どうにかテストできないかなと模索したんですが、そもそもtsserverの型定義がなく諦めました。（<a href="https://github.com/Quramy/typescript-eslint-language-service/blob/master/e2e/helper/server.ts">Quramy/typescript-eslint-language-service</a> を見ると丁寧にやってて、ここまでやる気力はわかなかった…）
 ユニットテストできない、かつプリントデバッグできないので、環境変数<code class="language-text">TSS_LOG</code>を使って動作確認していくのがしんどかったです。多少苦労してもtsserverを扱ったほうがよいのかも。</p>
 <p>ハマりどころとして、VS Codeで使用するTypeScriptをworkspaceのものを指定しなければ動作しないというのがありました。<code class="language-text">.vscode/settings.json</code>に<code class="language-text"> "typescript.tsdk": "node_modules/typescript/lib"</code>と書くやつですね（F1キーで<code class="language-text">TypeScript: Select TypeScript Version</code>する）。</p>
