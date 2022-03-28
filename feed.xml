@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 15 Mar 2022 01:32:16 GMT</lastBuildDate><item><title><![CDATA[Next.js 12.1 x jest x vanilla-extract でハマったこと]]></title><description><![CDATA[TL;DR Next.jsのドキュメントをちゃんと読んで設定を書くこと。 は swc でビルドできるプロジェクト向け 構成 Next.js 12.1 jest React Testing Library vanilla-extract 起きたこと vanilla-extract…]]></description><link>https://fourside.github.ionext12_jest_vanilla-extract</link><guid isPermaLink="false">https://fourside.github.ionext12_jest_vanilla-extract</guid><pubDate>Tue, 15 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;TL;DR&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 28 Mar 2022 13:20:23 GMT</lastBuildDate><item><title><![CDATA[Eslint Pluginを作りました]]></title><description><![CDATA[問題 下記のようなディレクトリ構成のプロジェクトがあったとします。 このプロジェクトでは、例えば  は  からのみ依存されているとします。JavaScript…]]></description><link>https://fourside.github.ioeslint_plugin</link><guid isPermaLink="false">https://fourside.github.ioeslint_plugin</guid><pubDate>Mon, 28 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;問題&lt;/h2&gt;
+&lt;p&gt;下記のようなディレクトリ構成のプロジェクトがあったとします。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;src/components/
+  model/
+    user/
+      user.tsx
+      user.css.ts
+      user.test.tsx
+      user.stories.tsx
+  page/
+    dashboard/
+      dashboard.tsx
+      dashboard.css.ts
+      dashboard.test.tsx
+      dashboard.stories.tsx
+  ui/
+    button/
+      button.tsx
+      button.css.ts
+      button.test.tsx
+      button.stories.tsx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;このプロジェクトでは、例えば &lt;code class=&quot;language-text&quot;&gt;user.css.ts&lt;/code&gt; は &lt;code class=&quot;language-text&quot;&gt;user.tsx&lt;/code&gt; からのみ依存されているとします。JavaScriptには当然ディレクトリ単位での可視性のスコープなんてものはないため、&lt;code class=&quot;language-text&quot;&gt;user.css.ts&lt;/code&gt; は &lt;code class=&quot;language-text&quot;&gt;dashboard.tsx&lt;/code&gt; からも参照できてしまい、他のコンポーネントを参照する場合はエディタの補完候補に目を凝らさないといけません。&lt;/p&gt;
+&lt;h2&gt;どうするか&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.npmjs.com/package/eslint-plugin-import-only-from-index&quot;&gt;eslint-plugin-import-only-from-index&lt;/a&gt; を作りました。&lt;/p&gt;
+&lt;p&gt;eslintrcにはこのように指定します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;plugin&quot;: [&quot;import-only-from-index&quot;],
+&quot;rules&quot;: {
+  &quot;import-only-from-index/import-only-from-index&quot;: [&quot;error&quot;, [&quot;src/components&quot;]]
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;オプションで指定するディレクトリ（上記例では &lt;code class=&quot;language-text&quot;&gt;src/components&lt;/code&gt;）からexportしたものはlint errorとします。ただし、indexファイルからexportしたものはerrorとしません。つまり指定ディレクトリから外部に公開したいものは、indexファイルからre-exportすることを強制します。&lt;/p&gt;
+&lt;p&gt;これは完全な個人用途なのでpublishしなくてもいいかと思ったんですが、自分で使うときにnpm installできるのは便利だし、特に誰も困らないだろうからいいだろうと決めてpublishしました。&lt;/p&gt;
+&lt;h2&gt;やったこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Eslint Pluginの作成&lt;/li&gt;
+&lt;li&gt;TypeScript Server Pluginの作成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Eslint Plugin&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://eslint.org/docs/developer-guide/working-with-plugins&quot;&gt;Working with Plugins - ESLint&lt;/a&gt; では Yeoman のテンプレートが内されていますが、npx一発では作れないので諦めました。がそれ以外は、plugin作成用のlint ruleの案内があったりしてよかったです。&lt;/p&gt;
+&lt;p&gt;初手としては、&lt;a href=&quot;https://github.com/Quramy/eslint-plugin-tutorial&quot;&gt;Quramy/eslint-plugin-tutorial&lt;/a&gt; というチュートリアルが分かりやすかったです。pluginが求めるインターフェイス、簡単なルールの書き方、そのテストのやり方、ASTについて分かりやすく案内されています。&lt;/p&gt;
+&lt;p&gt;そして、作ってみて気づいたのが、import文の曖昧なパターンの存在です。&lt;code class=&quot;language-text&quot;&gt;import * from &apos;./hoge&apos;;&lt;/code&gt; としたとき、二つの解釈が生まれます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;hoge&lt;/code&gt; ディレクトリにある &lt;code class=&quot;language-text&quot;&gt;index.ts&lt;/code&gt; からのインポート&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;hoge&lt;/code&gt; ファイルで、何らかの拡張子が省略されている（&lt;code class=&quot;language-text&quot;&gt;hoge.ts&lt;/code&gt; なのか、&lt;code class=&quot;language-text&quot;&gt;hoge.tsx&lt;/code&gt; なのかは字句のみでは分からない）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;それらしい方法も思いつかないので、愚直にファイルシステムにアクセスして何が存在するのか確かめることにしています。それに伴って、テストでもbeforeAll/afterAllでディレクトリやファイルを作って後始末をしたくなるんですが、eslintのtest runnerにはそれがありません。そこで &lt;a href=&quot;https://vitest.dev/&quot;&gt;Vitest&lt;/a&gt;でeslint test runnerを囲うことにしました。Vitestは依存ライブラリが少ないし簡単に実行できてよいですね。簡単なテストにはmochaを選びがちだったんですが、これからはVitestでよさそうです。&lt;/p&gt;
+&lt;h3&gt;TypeScript Server Plugin&lt;/h3&gt;
+&lt;p&gt;Eslintのpluginだけではエディタの補完候補までは制御できないので、Language Serverのレスポンスに介入できるTypeScript Server Pluginを作ってみました。コンパイラオプションの &lt;code class=&quot;language-text&quot;&gt;plugins&lt;/code&gt; に指定します。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Microsoft/TypeScript/wiki/Writing-a-Language-Service-Plugin&quot;&gt;Writing a Language Service Plugin · microsoft/TypeScript Wiki&lt;/a&gt; が入門にちょうどよかったです。テストに関しては実際にプロジェクトを作って確かめろというスタンスで、どうにかテストできないかなと模索したんですが、そもそもtsserverの型定義がなく諦めました。（&lt;a href=&quot;https://github.com/Quramy/typescript-eslint-language-service/blob/master/e2e/helper/server.ts&quot;&gt;Quramy/typescript-eslint-language-service&lt;/a&gt; を見ると丁寧にやってて、ここまでやる気力はわかなかった…）
+ユニットテストできない、かつプリントデバッグできないので、環境変数&lt;code class=&quot;language-text&quot;&gt;TSS_LOG&lt;/code&gt;を使って動作確認していくのがしんどかったです。多少苦労してもtsserverを扱ったほうがよいのかも。&lt;/p&gt;
+&lt;p&gt;ハマりどころとして、VS Codeで使用するTypeScriptをworkspaceのものを指定しなければ動作しないというのがありました。&lt;code class=&quot;language-text&quot;&gt;.vscode/settings.json&lt;/code&gt;に&lt;code class=&quot;language-text&quot;&gt; &quot;typescript.tsdk&quot;: &quot;node_modules/typescript/lib&quot;&lt;/code&gt;と書くやつですね（F1キーで&lt;code class=&quot;language-text&quot;&gt;TypeScript: Select TypeScript Version&lt;/code&gt;する）。&lt;/p&gt;
+&lt;h3&gt;参考にさせてもらったリポジトリや記事&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/uhyo/eslint-plugin-import-access&quot;&gt;uhyo/eslint-plugin-import-access&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;eslint pluginとtypescript server pluginを同じエントリポイントで公開する方法が参考になりました&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://qiita.com/Quramy/items/c2835bc380c3e822d479#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E6%9B%B8%E5%BC%8F&quot;&gt;TSServerの使い方メモ - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;今回は単純なimport文だったのでASTの深いところまで潜らずに済みましたが、もうちょっと勉強できるお題があったらよかった…。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Next.js 12.1 x jest x vanilla-extract でハマったこと]]></title><description><![CDATA[TL;DR Next.jsのドキュメントをちゃんと読んで設定を書くこと。 は swc でビルドできるプロジェクト向け 構成 Next.js 12.1 jest React Testing Library vanilla-extract 起きたこと vanilla-extract…]]></description><link>https://fourside.github.ionext12_jest_vanilla-extract</link><guid isPermaLink="false">https://fourside.github.ionext12_jest_vanilla-extract</guid><pubDate>Tue, 15 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;TL;DR&lt;/h2&gt;
 &lt;p&gt;Next.jsのドキュメントをちゃんと読んで設定を書くこと。&lt;code class=&quot;language-text&quot;&gt;next/jest&lt;/code&gt; は swc でビルドできるプロジェクト向け&lt;/p&gt;
 &lt;h2&gt;構成&lt;/h2&gt;
 &lt;ul&gt;
