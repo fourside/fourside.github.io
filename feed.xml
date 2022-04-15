@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 Apr 2022 01:12:09 GMT</lastBuildDate><item><title><![CDATA[コンポーネントのテストを書きました]]></title><description><![CDATA[最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。 testing library 用の eslint rule が便利 eslint-plugin…]]></description><link>https://fourside.github.iocomponent_tests</link><guid isPermaLink="false">https://fourside.github.iocomponent_tests</guid><pubDate>Fri, 15 Apr 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 Apr 2022 01:13:40 GMT</lastBuildDate><item><title><![CDATA[コンポーネントのテストを書きました]]></title><description><![CDATA[最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。 testing library 用の eslint rule が便利 eslint-plugin…]]></description><link>https://fourside.github.iocomponent_tests</link><guid isPermaLink="false">https://fourside.github.iocomponent_tests</guid><pubDate>Fri, 15 Apr 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。&lt;/p&gt;
 &lt;h3&gt;testing library 用の eslint rule が便利&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://testing-library.com/docs/ecosystem-eslint-plugin-testing-library/&quot;&gt;eslint-plugin-testing-library | Testing Library&lt;/a&gt;
@@ -11,10 +11,13 @@
 &lt;/ul&gt;
 &lt;h3&gt;prop drilling したコールバックのテストがしんどい&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;イベントを発火させて、コンポーネントに渡したコールバックが呼ばれていることを確認するテストを書きたい&lt;/li&gt;
+&lt;li&gt;イベントを発火させて、コンポーネントに渡したコールバックが呼ばれていることを確認するテストを書きたい
+&lt;ul&gt;
 &lt;li&gt;イベントを発火するコンポーネントとテスト対象のコンポーネントが分かれているとき、さらにその二者が遠く離れているとき、イベント発火コンポーネントに至るまでの DOM 構造を知っていなければいけない問題がある
 &lt;ul&gt;
 &lt;li&gt;直接の親子なら親は子に依存してるので、少しくらい知っていてもいいかと思うのだけど、孫やひ孫くらい離れていると知りすぎている感があってつらい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;コンポーネント毎にユニークなtest-idがあればいいのかもしれない
@@ -30,15 +33,24 @@
 &lt;li&gt;テストAで削除のテストをやると、テストBでは削除されたあとの状態になっていた&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://swr.vercel.app/ja/docs/advanced/cache#%E3%83%86%E3%82%B9%E3%83%88%E3%82%B1%E3%83%BC%E3%82%B9%E9%96%93%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88&quot;&gt;Cache – SWR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://swr.vercel.app/ja/docs/advanced/cache#%E3%83%86%E3%82%B9%E3%83%88%E3%82%B1%E3%83%BC%E3%82%B9%E9%96%93%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88&quot;&gt;Cache – SWR&lt;/a&gt;
+&lt;ul&gt;
 &lt;li&gt;回避策はここに書いてあった（読んでたはずだけど、テスト間でキャッシュするなんて思い至らなかった）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;@mswjs/data が便利&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/mswjs/data&quot;&gt;mswjs/data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/mswjs/data&quot;&gt;mswjs/data&lt;/a&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://zenn.dev/takepepe/articles/msw-data-userflow-testing&quot;&gt;mswjs/data で広がるテスト戦略&lt;/a&gt; で知りました&lt;/li&gt;
-&lt;li&gt;msw 単体で使うと取得系のテストは簡単に書けるようになるが、更新系のテストでは工夫が必要で悩んでいた&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;msw 単体で使うと取得系のテストは簡単に書けるようになるが、更新系のテストでは工夫が必要で悩んでいた
+&lt;ul&gt;
 &lt;li&gt;mswjs/data はその辺の面倒臭さをカバーしてくれるのでありがたい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;React DnD テストしやすい&lt;/h3&gt;
 &lt;ul&gt;

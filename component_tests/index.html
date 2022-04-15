@@ -11,10 +11,13 @@
 </ul>
 <h3>prop drilling したコールバックのテストがしんどい</h3>
 <ul>
-<li>イベントを発火させて、コンポーネントに渡したコールバックが呼ばれていることを確認するテストを書きたい</li>
+<li>イベントを発火させて、コンポーネントに渡したコールバックが呼ばれていることを確認するテストを書きたい
+<ul>
 <li>イベントを発火するコンポーネントとテスト対象のコンポーネントが分かれているとき、さらにその二者が遠く離れているとき、イベント発火コンポーネントに至るまでの DOM 構造を知っていなければいけない問題がある
 <ul>
 <li>直接の親子なら親は子に依存してるので、少しくらい知っていてもいいかと思うのだけど、孫やひ孫くらい離れていると知りすぎている感があってつらい</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>コンポーネント毎にユニークなtest-idがあればいいのかもしれない
@@ -30,15 +33,24 @@
 <li>テストAで削除のテストをやると、テストBでは削除されたあとの状態になっていた</li>
 </ul>
 </li>
-<li><a href="https://swr.vercel.app/ja/docs/advanced/cache#%E3%83%86%E3%82%B9%E3%83%88%E3%82%B1%E3%83%BC%E3%82%B9%E9%96%93%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88">Cache – SWR</a></li>
+<li><a href="https://swr.vercel.app/ja/docs/advanced/cache#%E3%83%86%E3%82%B9%E3%83%88%E3%82%B1%E3%83%BC%E3%82%B9%E9%96%93%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88">Cache – SWR</a>
+<ul>
 <li>回避策はここに書いてあった（読んでたはずだけど、テスト間でキャッシュするなんて思い至らなかった）</li>
+</ul>
+</li>
 </ul>
 <h3>@mswjs/data が便利</h3>
 <ul>
-<li><a href="https://github.com/mswjs/data">mswjs/data</a></li>
+<li><a href="https://github.com/mswjs/data">mswjs/data</a>
+<ul>
 <li><a href="https://zenn.dev/takepepe/articles/msw-data-userflow-testing">mswjs/data で広がるテスト戦略</a> で知りました</li>
-<li>msw 単体で使うと取得系のテストは簡単に書けるようになるが、更新系のテストでは工夫が必要で悩んでいた</li>
+</ul>
+</li>
+<li>msw 単体で使うと取得系のテストは簡単に書けるようになるが、更新系のテストでは工夫が必要で悩んでいた
+<ul>
 <li>mswjs/data はその辺の面倒臭さをカバーしてくれるのでありがたい</li>
+</ul>
+</li>
 </ul>
 <h3>React DnD テストしやすい</h3>
 <ul>
