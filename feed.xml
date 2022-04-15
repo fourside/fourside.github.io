@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 28 Mar 2022 13:26:26 GMT</lastBuildDate><item><title><![CDATA[Eslint Pluginを作りました]]></title><description><![CDATA[問題 下記のようなディレクトリ構成のプロジェクトがあったとします。 このプロジェクトでは、例えば  は  からのみ依存されているとします。JavaScript…]]></description><link>https://fourside.github.ioeslint_plugin</link><guid isPermaLink="false">https://fourside.github.ioeslint_plugin</guid><pubDate>Mon, 28 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;問題&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 Apr 2022 00:58:14 GMT</lastBuildDate><item><title><![CDATA[コンポーネントのテストを書きました]]></title><description><![CDATA[最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、 testing library 用の eslint rule が便利 eslint-plugin-testing-library…]]></description><link>https://fourside.github.iocomponent_tests</link><guid isPermaLink="false">https://fourside.github.iocomponent_tests</guid><pubDate>Fri, 15 Apr 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、&lt;/p&gt;
+&lt;h3&gt;testing library 用の eslint rule が便利&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://testing-library.com/docs/ecosystem-eslint-plugin-testing-library/&quot;&gt;eslint-plugin-testing-library | Testing Library&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;「ここではgetByXXXを使うな」とか、要素取得メソッドの矯正をしてくれる&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;screen.debug()&lt;/code&gt; もエラーにしてくれるので、消し忘れ防止になる&lt;/li&gt;
+&lt;li&gt;ただ &lt;code class=&quot;language-text&quot;&gt;targetElement.firstChild&lt;/code&gt; みたいに直接 DOM 取得すると怒られるのは少し不便（その行だけ無効にしてしまってる）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;prop drilling したコールバックのテストがしんどい&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;イベントを発火させて、コンポーネントに渡したコールバックが呼ばれていることを確認するテストを書きたい&lt;/li&gt;
+&lt;li&gt;イベントを発火するコンポーネントとテスト対象のコンポーネントが分かれているとき、さらにその二者が遠く離れているとき、イベント発火コンポーネントに至るまでの DOM 構造を知っていなければいけない問題がある
+&lt;ul&gt;
+&lt;li&gt;直接の親子なら親は子に依存してるので、少しくらい知っていてもいいかと思うのだけど、孫やひ孫くらい離れていると知りすぎている感があってつらい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;コンポーネント毎にユニークなtest-idがあればいいのかもしれない
+&lt;ul&gt;
+&lt;li&gt;それでも DOM 上での登場順に気を配らなくてはいけないけども&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;SWR を使うときはキャッシュに気をつける&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;どう考えてもテスト同士が干渉してる事象があった
+&lt;ul&gt;
+&lt;li&gt;テストAで削除のテストをやると、テストBでは削除されたあとの状態になっていた&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://swr.vercel.app/ja/docs/advanced/cache#%E3%83%86%E3%82%B9%E3%83%88%E3%82%B1%E3%83%BC%E3%82%B9%E9%96%93%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88&quot;&gt;Cache – SWR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;回避策はここに書いてあった（読んでたはずだけど、テスト間でキャッシュするなんて思い至らなかった）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;@mswjs/data が便利&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/mswjs/data&quot;&gt;mswjs/data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zenn.dev/takepepe/articles/msw-data-userflow-testing&quot;&gt;mswjs/data で広がるテスト戦略&lt;/a&gt; で知りました&lt;/li&gt;
+&lt;li&gt;msw 単体で使うと取得系のテストは簡単に書けるようになるが、更新系のテストでは工夫が必要で悩んでいた&lt;/li&gt;
+&lt;li&gt;mswjs/data はその辺の面倒臭さをカバーしてくれるのでありがたい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;React DnD テストしやすい&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://react-dnd.github.io/react-dnd/docs/testing&quot;&gt;React DnD&lt;/a&gt; にテストに関する章があるくらいドキュメントがきちんとしている
+&lt;ul&gt;
+&lt;li&gt;ただ &lt;a href=&quot;https://react-dnd.github.io/react-dnd/docs/backends/test&quot;&gt;test backend&lt;/a&gt; を使うのだと勘違いしていて、しばらくハマってしまった
+&lt;ul&gt;
+&lt;li&gt;testing-library は DOM を扱うので、通常使う HTML5 backend でよい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;userEventにdragイベントやdropイベントは実装されてないので、fireEventで扱うしかなかった
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/testing-library/user-event/issues/440&quot;&gt;Simulate drag and drop · Issue #440 · testing-library/user-event&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;実装する予定もなさそう&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Intersection Observer は jsdom 環境でテストできない&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jsdom/jsdom/issues/2032&quot;&gt;Support for Intersection Observer? · Issue #2032 · jsdom/jsdom&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;jsdom で Intersection Observer が実装されていなかった&lt;/li&gt;
+&lt;li&gt;ひとまず下記のようなコードで参照エラーになるのを回避して、実際にテストするのは e2e でやるしかないか？ と思ってます&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;intersectionObserverMock&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token function-variable function&quot;&gt;observe&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token function-variable function&quot;&gt;disconnect&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IntersectionObserver &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; jest&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;mockImplementation&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;intersectionObserverMock&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;issueを辿っていくとshopifyがmockを実装していた
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/Shopify/quilt/blob/main/packages/jest-dom-mocks/src/intersection-observer.ts&quot;&gt;quilt/intersection-observer.ts at main · Shopify/quilt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;以上です&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[Eslint Pluginを作りました]]></title><description><![CDATA[問題 下記のようなディレクトリ構成のプロジェクトがあったとします。 このプロジェクトでは、例えば  は  からのみ依存されているとします。JavaScript…]]></description><link>https://fourside.github.ioeslint_plugin</link><guid isPermaLink="false">https://fourside.github.ioeslint_plugin</guid><pubDate>Mon, 28 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;問題&lt;/h2&gt;
 &lt;p&gt;下記のようなディレクトリ構成のプロジェクトがあったとします。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;src/components/
   model/
@@ -394,7 +478,8 @@ module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;
     &lt;/span&gt;
 
 
-  &lt;div data-view-component=&quot;true&quot; class=&quot;flash-action&quot;&gt;        &lt;a href=&quot;{{ revealButtonHref }}&quot; data-view-component=&quot;true&quot; class=&quot;btn-sm btn&quot;&gt;  Show hidden characters
+  &lt;div data-view-component=&quot;true&quot; class=&quot;flash-action&quot;&gt;      &lt;a href=&quot;{{ revealButtonHref }}&quot; data-view-component=&quot;true&quot; class=&quot;btn-sm btn&quot;&gt;  Show hidden characters
+  
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/template&gt;
@@ -1840,7 +1925,8 @@ categories: vim
     &lt;/span&gt;
 
 
-  &lt;div data-view-component=&quot;true&quot; class=&quot;flash-action&quot;&gt;        &lt;a href=&quot;{{ revealButtonHref }}&quot; data-view-component=&quot;true&quot; class=&quot;btn-sm btn&quot;&gt;  Show hidden characters
+  &lt;div data-view-component=&quot;true&quot; class=&quot;flash-action&quot;&gt;      &lt;a href=&quot;{{ revealButtonHref }}&quot; data-view-component=&quot;true&quot; class=&quot;btn-sm btn&quot;&gt;  Show hidden characters
+  
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/template&gt;
