@@ -1,4 +1,93 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 Apr 2022 01:13:40 GMT</lastBuildDate><item><title><![CDATA[コンポーネントのテストを書きました]]></title><description><![CDATA[最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。 testing library 用の eslint rule が便利 eslint-plugin…]]></description><link>https://fourside.github.iocomponent_tests</link><guid isPermaLink="false">https://fourside.github.iocomponent_tests</guid><pubDate>Fri, 15 Apr 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[fourside.github.io]]></title><description><![CDATA[programmer's note]]></description><link>https://fourside.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 19 Apr 2022 13:10:31 GMT</lastBuildDate><item><title><![CDATA[React18対応をしました]]></title><description><![CDATA[手元の個人プロジェクトで React を v18 にしました。やったことをメモします。 対応ライブラリのバージョンアップ 手元で使っているだいたいのライブラリは18対応されていて、バージョンをあげるだけで問題なく動いた storybook は alpha…]]></description><link>https://fourside.github.ioreact18</link><guid isPermaLink="false">https://fourside.github.ioreact18</guid><pubDate>Tue, 19 Apr 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;手元の個人プロジェクトで React を v18 にしました。やったことをメモします。&lt;/p&gt;
+&lt;h2&gt;対応ライブラリのバージョンアップ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;手元で使っているだいたいのライブラリは18対応されていて、バージョンをあげるだけで問題なく動いた
+&lt;ul&gt;
+&lt;li&gt;storybook は alpha 版までっぽいので今は見送り&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;React DnD はバージョンアップに伴って ESM のみ提供することになったようなので、テストが動かなくなってしまった
+&lt;ul&gt;
+&lt;li&gt;jest の transform の対象にするために以下の設定を追加した&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://jestjs.io/ja/docs/configuration#transformignorepatterns-arraystring&quot;&gt;jest - transformIgnorePatterns&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;transformIgnorePatterns: [&quot;/node_modules/(?!react-dnd)/&quot;],&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;分かりにくいんだけど、デフォルトで node_modules を無視する設定になっているところに、react-dnd だけ除外する正規表現
+&lt;ul&gt;
+&lt;li&gt;ignore リストに 否定先読みで除外する場合を追加するので、意味的に二重否定になっていて飲み込みにくかった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;これを加えるとテスト実行がやたら遅くなる
+&lt;ul&gt;
+&lt;li&gt;100件のテストケースで30秒ほどかかる
+&lt;ul&gt;
+&lt;li&gt;対応前は no-cache で5秒前後&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;React DnD を使っていないテストでも遅くなるので、おそらく設定に起因する遅さ
+&lt;ul&gt;
+&lt;li&gt;否定先読みが遅いのか、そもそも正規表現が遅いのかは分からない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;--maxWorkers=50%&lt;/code&gt; を jest に与えるとやや速くなったけど焼け石に水感はある&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;jest の ESM 対応が進んでいるみたい
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/facebook/jest/issues/9430&quot;&gt;Meta: Native support for ES Modules · Issue #9430 · facebook/jest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;@types/react の breaking changes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;以下の PR に詳細があります
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210&quot;&gt;[react] React 18 types by eps1lon · Pull Request #56210 · DefinitelyTyped/DefinitelyTyped&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;と思ったけど明示的に書かれてないこともまあまああるな…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;変換ツールが提供されています…が結局使わなかった
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/eps1lon/types-react-codemod&quot;&gt;types-react-codemod&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;callback の引数の型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;うっかり忘れてても許されていたのが型エラーになりました。ちゃんと型を指定するだけ。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;FC から children が取り除かれた&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;暗黙的な &lt;code class=&quot;language-text&quot;&gt;children&lt;/code&gt; を扱えなくなりました
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;FC&amp;lt;Props&gt;&lt;/code&gt; を &lt;code class=&quot;language-text&quot;&gt;FC&amp;lt;PropsWithChildren&amp;lt;Props&gt;&gt;&lt;/code&gt; に書き換えるだけ&lt;/li&gt;
+&lt;li&gt;そんなに数がないのでツールに頼らなくてよかった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;VFC が deprecated になった&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;FC が VFC と同じ意味を持つようになった余波かな&lt;/li&gt;
+&lt;li&gt;上述の変換ツールには VFC を書き換える機能がなさそうだった
+&lt;ul&gt;
+&lt;li&gt;内部的に jscodeshift という meta 社の OSS を使っているようなので、それを使って単純な書き換えをするものを作ってみた&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fourside/react_codemod_vfc_to_fc&quot;&gt;react_codemod_vfc_to_fc&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;VFC というトークンを見つけたら、問答無用で FC に書き換えていく&lt;/li&gt;
+&lt;li&gt;厳密にやろうと思うと難しくて諦めました
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;function VFC&lt;/code&gt; を見つけたら &lt;code class=&quot;language-text&quot;&gt;function FC&lt;/code&gt; になってしまう&lt;/li&gt;
+&lt;li&gt;書き換え対象は tsx だし（jscodeshift に指定するパーサは tsx ）コンポーネントにおいて &lt;code class=&quot;language-text&quot;&gt;VFC&lt;/code&gt; という変数や関数を定義することはほぼないので現実的に問題ないはず&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[コンポーネントのテストを書きました]]></title><description><![CDATA[最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。 testing library 用の eslint rule が便利 eslint-plugin…]]></description><link>https://fourside.github.iocomponent_tests</link><guid isPermaLink="false">https://fourside.github.iocomponent_tests</guid><pubDate>Fri, 15 Apr 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近書いたコンポーネントのテストで、よかったこと気づいたことをメモしておきます。主に react testing library を使っていて、それが前提になっています。&lt;/p&gt;
 &lt;h3&gt;testing library 用の eslint rule が便利&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://testing-library.com/docs/ecosystem-eslint-plugin-testing-library/&quot;&gt;eslint-plugin-testing-library | Testing Library&lt;/a&gt;
